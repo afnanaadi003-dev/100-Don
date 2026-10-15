@@ -33,6 +33,14 @@
   .tag.status-active { background: #14301f; color: #7ee2a8; }
   .tag.status-opposition { background: #3a1618; color: #f29a9e; }
   .tag.party { font-style: italic; color: var(--muted); }
+  .rank-tag { background: #2b2410; border-color: #5a4a10; color: #f0c94a; font-weight: 700; }
+  .leader { max-width: 1400px; margin: 0 auto; padding: 0 20px 6px; }
+  .leader h3 { text-align: center; color: var(--accent); letter-spacing: 2px; font-size: .95rem; margin: 18px 0 10px; }
+  .ranks { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .rank { background: var(--card); border: 1px solid var(--accent); border-radius: 12px; padding: 12px 18px; min-width: 190px; text-align: center; }
+  .rank .r { font-size: 1.9rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  .rank .n { font-size: .98rem; font-weight: 650; }
+  .rank .t { font-size: .75rem; color: var(--muted); margin-top: 2px; }
   .count { text-align: center; color: var(--muted); padding: 8px; }
   .num { font-size: 3.4rem; color: var(--accent); font-weight: 800; line-height: 1; }
   .muted-tag { color: var(--muted); font-style: italic; }
@@ -44,6 +52,11 @@
   <h1>POLITICIAN PROFILES</h1>
   <p>Empire builders, presidents, junta leaders, opposition chiefs &amp; student icons — searchable.</p>
 </header>
+
+<section class="leader">
+  <h3>TOP 5 — GLOBAL POWER SERIAL (ALL REGIONS)</h3>
+  <div class="ranks" id="ranks"></div>
+</section>
 
 <div class="bar">
   <input id="q" type="search" placeholder="Search name, title, country, summary…" />
@@ -73,6 +86,9 @@ fetch('politician_profiles.json')
     [...new Set(all.map(p => p.region).filter(Boolean))].sort().forEach(rg => {
       const o = document.createElement('option'); o.value = rg; o.textContent = rg; regionSel.append(o);
     });
+    const top = all.filter(p => p.global_power_rank).sort((a, b) => a.global_power_rank - b.global_power_rank);
+    const ranksEl = document.getElementById('ranks');
+    ranksEl.innerHTML = top.map(p => `<div class="rank"><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('');
     render();
   })
   .catch(e => {
@@ -97,6 +113,7 @@ function render() {
       ${p.era ? `<span class="tag era">${esc(p.era)}</span>` : ''}
       <p class="summary">${esc(p.summary)}</p>
       <div class="tags">
+        ${p.global_power_rank ? `<span class="tag rank-tag">⚡ GLOBAL RANK #${p.global_power_rank}</span>` : ''}
         <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
         <span class="tag">${esc(p.country)}</span>
         <span class="tag">${esc(p.region)}</span>

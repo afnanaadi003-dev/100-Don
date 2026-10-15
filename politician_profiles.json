@@ -9,6 +9,7 @@
   "profiles": [
     {
       "id": "genghis-khan",
+      "global_power_rank": 1,
       "name": "Genghis Khan",
       "title": "Founder & Great Khan of the Mongol Empire",
       "party": null,
@@ -64,6 +65,7 @@
     },
     {
       "id": "vladimir-putin",
+      "global_power_rank": 3,
       "name": "Vladimir Putin",
       "title": "President of the Russian Federation",
       "party": null,
@@ -204,6 +206,7 @@
     },
     {
       "id": "benjamin-netanyahu",
+      "global_power_rank": 4,
       "name": "Benjamin Netanyahu",
       "title": "Prime Minister of Israel",
       "party": "Likud",
@@ -404,6 +407,7 @@
     },
     {
       "id": "xi-jinping",
+      "global_power_rank": 5,
       "name": "Xi Jinping",
       "title": "General Secretary of the CCP; President of China; Chairman of the Central Military Commission",
       "party": "Chinese Communist Party",
@@ -734,6 +738,7 @@
     },
     {
       "id": "barack-obama",
+      "global_power_rank": 2,
       "name": "Barack Obama",
       "title": "President of the United States (per the provided text)",
       "party": "Democratic",

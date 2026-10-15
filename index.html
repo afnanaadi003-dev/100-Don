@@ -104,6 +104,30 @@
   .tag.status-active { background: rgba(126,226,168,.1); color: #7ee2a8; border-color: rgba(126,226,168,.35); }
   .tag.status-opposition { background: rgba(242,154,158,.1); color: #f29a9e; border-color: rgba(242,154,158,.35); }
   .tag.party { font-style: italic; color: var(--muted); }
+  /* ── profile drawer (slides in from upper right) ── */
+  .overlay { position: fixed; inset: 0; background: rgba(4,7,15,.55); backdrop-filter: blur(3px);
+    opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 90; }
+  .overlay.show { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 94vw); z-index: 100;
+    background: linear-gradient(200deg, rgba(26,32,54,.94), rgba(7,11,24,.97));
+    border-left: 1px solid var(--border); box-shadow: -30px 0 70px rgba(0,0,0,.55);
+    transform: translateX(105%); transition: transform .38s cubic-bezier(.22,.9,.32,1); overflow-y: auto; }
+  .drawer.open { transform: translateX(0); }
+  .drawer-close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--border); background: rgba(255,255,255,.06); color: var(--text);
+    font-size: 1.1rem; cursor: pointer; z-index: 2; }
+  .drawer-close:hover { border-color: var(--gold); box-shadow: 0 0 14px rgba(240,201,74,.35); }
+  .drawer-inner { padding: 96px 26px 30px; }
+  .drawer .avatar.big { display: flex; margin: 0 auto; position: relative; width: 92px; height: 92px; font-size: 3rem; }
+  .drawer .avatar.big .rank-corner { top: -8px; right: -14px; width: 42px; height: 42px; font-size: .85rem; }
+  .drawer h2 { font-family: "Playfair Display", serif; text-align: center; margin: 14px 0 4px; font-size: 1.5rem; }
+  .dtitle { text-align: center; color: var(--accent); font-size: .9rem; margin: 0 0 18px; line-height: 1.4; }
+  .drawer dl { display: grid; grid-template-columns: auto 1fr; gap: 9px 16px; margin: 0 0 18px; font-size: .9rem; }
+  .drawer dt { color: var(--muted); font-weight: 600; }
+  .drawer dd { margin: 0; text-align: right; }
+  .dsummary { color: var(--muted); font-size: .93rem; line-height: 1.65; border-top: 1px solid rgba(240,201,74,.25); padding-top: 16px; }
+  .name-btn { cursor: pointer; transition: color .2s; }
+  .name-btn:hover { color: var(--gold); text-shadow: 0 0 14px rgba(240,201,74,.45); }
   .count { text-align: center; color: var(--muted); padding: 8px; }
 </style>
 </head>
@@ -138,6 +162,12 @@
 <div class="count" id="count"></div>
 <div class="grid" id="grid"></div>
 
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Close profile">✕</button>
+  <div class="drawer-inner" id="drawerInner"></div>
+</aside>
+
 <script>
 const grid = document.getElementById('grid');
 const q = document.getElementById('q');
@@ -145,6 +175,8 @@ const categorySel = document.getElementById('category');
 const regionSel = document.getElementById('region');
 const statusSel = document.getElementById('status');
 const countEl = document.getElementById('count');
+const drawer = document.getElementById('drawer');
+const overlay = document.getElementById('overlay');
 let all = [];
 
 /* unique war crest / icon per politician */
@@ -190,6 +222,8 @@ fetch('politician_profiles.json')
     document.getElementById('ranks').innerHTML = top.map(p =>
       `<div class="rank"><span class="ico">${icon(p)}</span><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('');
     render();
+    const wantedId = new URLSearchParams(location.search).get('id');
+    if (wantedId) openProfile(wantedId);
   })
   .catch(e => { countEl.textContent = 'Failed to load politician_profiles.json — ' + e.message; });
 
@@ -212,7 +246,7 @@ function render() {
       <div class="head">
         <div class="avatar"><span>${icon(p)}</span></div>
         <div>
-          <h2>${esc(p.name)}</h2>
+          <h2 class="name-btn" data-id="${esc(p.id)}" title="Open full profile">${esc(p.name)}</h2>
           <p class="title">${esc(p.title)}</p>
         </div>
       </div>
@@ -228,6 +262,44 @@ function render() {
 }
 
 [q, categorySel, regionSel, statusSel].forEach(el => el.addEventListener('input', render));
+
+function openProfile(id) {
+  const p = all.find(x => x.id === id);
+  if (!p) return;
+  const rows = [
+    ['Global Power Rank', p.global_power_rank ? '#' + p.global_power_rank : null],
+    ['Status', p.status],
+    ['Country', p.country],
+    ['Region', p.region],
+    ['Party', p.party],
+    ['Era', p.era]
+  ].filter(r => r[1]);
+  document.getElementById('drawerInner').innerHTML = `
+    <div class="avatar big"><span>${icon(p)}</span>${p.global_power_rank ? `<span class="rank-corner">#${p.global_power_rank}</span>` : ''}</div>
+    <h2>${esc(p.name)}</h2>
+    <p class="dtitle">${esc(p.title)}</p>
+    <dl>${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
+    <p class="dsummary">${esc(p.summary)}</p>`;
+  drawer.classList.add('open');
+  overlay.classList.add('show');
+  history.replaceState(null, '', '?id=' + encodeURIComponent(id));
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProfile() {
+  drawer.classList.remove('open');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  if (location.search.includes('id=')) history.replaceState(null, '', location.pathname);
+}
+
+grid.addEventListener('click', e => {
+  const b = e.target.closest('.name-btn');
+  if (b) openProfile(b.dataset.id);
+});
+document.getElementById('drawerClose').addEventListener('click', closeProfile);
+overlay.addEventListener('click', closeProfile);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
 </script>
 </body>
 </html>

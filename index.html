@@ -70,7 +70,7 @@
   input[type="search"]:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 12px rgba(240,201,74,.25); }
 
   /* ── premium dreamy cards ── */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 22px; padding: 26px 22px 60px; max-width: 1400px; margin: 0 auto; }
   .card { position: relative; overflow: hidden; border-radius: 18px; padding: 0;
     background: linear-gradient(160deg, rgba(255,255,255,.07) 0%, rgba(22,28,46,.55) 45%, rgba(22,28,46,.4) 100%);
@@ -132,6 +132,20 @@
     border-top: 1px solid rgba(255,255,255,.08); }
   .open-hint span:last-child { transition: transform .2s; }
   .card:hover .open-hint span:last-child { transform: translateX(5px); }
+
+  /* ── compact card: name + famous thought + Profile button ── */
+  .card { padding: 22px 18px 18px; display: flex; flex-direction: column; }
+  .card h2 { font-size: 1.32rem; line-height: 1.25; }
+  .card .big-thought { flex: 1; }
+  .profile-btn { margin-top: 16px; width: 100%; padding: 12px 16px; border-radius: 12px; cursor: pointer;
+    font-family: "Inter", sans-serif; font-size: .8rem; font-weight: 800; letter-spacing: 2.4px;
+    text-transform: uppercase; color: #241a04; border: 1px solid rgba(255,255,255,.45);
+    background: linear-gradient(135deg, #ffe9a8 0%, var(--gold) 45%, var(--gold2) 100%);
+    box-shadow: 0 6px 20px rgba(240,201,74,.28), 0 2px 6px rgba(0,0,0,.4);
+    transition: transform .2s, box-shadow .2s, filter .2s; }
+  .profile-btn:hover, .profile-btn:focus-visible { transform: translateY(-2px); filter: brightness(1.06);
+    box-shadow: 0 12px 30px rgba(240,201,74,.45), 0 4px 10px rgba(0,0,0,.5); }
+  .profile-btn:active { transform: translateY(0); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: .72rem; padding: 3px 10px; border-radius: 999px;
     border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05); color: var(--text); }
@@ -453,47 +467,17 @@ function render() {
   );
   countEl.textContent = filtered.length + ' of ' + all.length + ' profiles';
   grid.innerHTML = filtered.map(p => {
-    const works = worksOf(p).slice(0, 3);
     const thought = thoughtOf(p);
     const src = thoughtSrc(p);
     return `
     <article class="card" data-id="${esc(p.id)}" tabindex="0" role="button" aria-label="Open profile of ${esc(p.name)}">
       ${p.global_power_rank ? `<span class="rank-corner">#${p.global_power_rank}</span>` : ''}
-      <div class="card-cover">${pic('images/' + p.id + '/cover.jpg', p.name + ' cover', coverArt(p))}</div>
-      <div class="head">
-        <div class="avatar"><span>${icon(p)}</span>${pic('images/' + p.id + '/photo.jpg', p.name, photoArt(p))}</div>
-        <div class="head-txt">
-          <h2>${esc(p.name)}</h2>
-          <p class="title">${esc(p.title)}</p>
-        </div>
-      </div>
-      <div class="card-body">
-        ${p.era ? `<span class="tag era" style="margin-top:12px;display:inline-block">${esc(p.era)}</span>` : ''}
-        ${thought ? `<blockquote class="big-thought">
-          <div class="thought-txt">${esc(thought)}</div>
-          ${src || p.name ? `<cite>${esc(src || p.name)}</cite>` : ''}
-        </blockquote>` : ''}
-        <p class="summary">${esc(p.summary)}</p>
-        <div class="tags">
-          <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
-          <span class="tag">${esc(p.country)}</span>
-          <span class="tag">${esc(p.region)}</span>
-          ${p.party ? `<span class="tag party">${esc(p.party)}</span>` : ''}
-        </div>
-      </div>
-      ${works.length ? `
-      <div class="works-strip">
-        <h4>Notable Works</h4>
-        <div class="strip">
-          ${works.map((w, i) => `
-            <div class="thumb" title="${esc(w[0])}">
-              <span class="ph-num">${i + 1}</span>
-              ${img('images/' + p.id + '/work-' + (i + 1) + '.jpg', w[0])}
-              <em>${esc(w[0])}</em>
-            </div>`).join('')}
-        </div>
-      </div>` : ''}
-      <div class="open-hint"><span>Full profile — cover, photo &amp; works</span><span>Open →</span></div>
+      <h2>${esc(p.name)}</h2>
+      ${thought ? `<blockquote class="big-thought">
+        <div class="thought-txt">${esc(thought)}</div>
+        ${src || p.name ? `<cite>${esc(src || p.name)}</cite>` : ''}
+      </blockquote>` : ''}
+      <button class="profile-btn" type="button">Profile →</button>
     </article>`;
   }).join('');
 }

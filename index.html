@@ -282,7 +282,79 @@
 
   .count { text-align: center; color: var(--muted); padding: 8px; }
 
+  /* ── Admin (no database — all edits live in localStorage) ── */
+  .fab { position: fixed; right: 18px; bottom: 18px; z-index: 120; padding: 12px 19px; border-radius: 999px;
+    font: 800 .74rem/1 "Inter", sans-serif; letter-spacing: 1.8px; text-transform: uppercase; cursor: pointer;
+    color: #241a04; border: 1px solid rgba(255,255,255,.45);
+    background: linear-gradient(135deg, #ffe9a8 0%, var(--gold) 45%, var(--gold2) 100%);
+    box-shadow: 0 8px 26px rgba(240,201,74,.35), 0 4px 12px rgba(0,0,0,.5); transition: transform .2s, box-shadow .2s; }
+  .fab:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(240,201,74,.5); }
+  .fab.on { background: linear-gradient(135deg, #9df3e0, var(--accent) 45%, #2bb59a); color: #04241d; }
+
+  .admin-pop { position: fixed; right: 18px; bottom: 72px; z-index: 121; width: min(330px, calc(100vw - 36px));
+    border-radius: 18px; padding: 18px; background: linear-gradient(200deg, rgba(26,32,54,.98), rgba(7,11,24,.99));
+    border: 1px solid var(--border); box-shadow: 0 30px 70px rgba(0,0,0,.7);
+    animation: pop .25s cubic-bezier(.22,.9,.32,1); }
+  @keyframes pop { from { transform: translateY(14px) scale(.96); opacity: 0; } }
+  .admin-pop h4 { margin: 0 0 6px; font-family: "Playfair Display", serif; color: var(--gold);
+    letter-spacing: 2px; font-size: .82rem; text-transform: uppercase; }
+  .admin-pop label { display: block; font-size: .7rem; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--muted); margin: 10px 0 4px; }
+  .admin-pop input[type="text"], .admin-pop input[type="password"] {
+    width: 100%; background: rgba(22,28,46,.9); color: var(--text); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 12px; font-size: .95rem; font-family: inherit; outline: none; }
+  .admin-pop input:focus { border-color: var(--gold); box-shadow: 0 0 12px rgba(240,201,74,.25); }
+  .err { color: #f29a9e; font-size: .78rem; min-height: 1em; margin: 8px 0 0; }
+  .hint { font-size: .7rem; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  .a-btn { display: block; width: 100%; margin-top: 9px; padding: 11px 12px; border-radius: 10px; cursor: pointer;
+    font: 800 .73rem/1 "Inter", sans-serif; letter-spacing: 1.6px; text-transform: uppercase;
+    background: rgba(255,255,255,.06); color: var(--text); border: 1px solid rgba(255,255,255,.16); transition: .18s; }
+  .a-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .a-btn.gold { background: linear-gradient(135deg, #ffe9a8 0%, var(--gold) 45%, var(--gold2) 100%);
+    color: #241a04; border-color: rgba(255,255,255,.45); }
+  .a-btn.gold:hover { filter: brightness(1.06); color: #241a04; }
+  .a-btn.danger:hover { border-color: #f29a9e; color: #f29a9e; }
+  .toggle { display: flex !important; align-items: center; gap: 9px; text-transform: none !important;
+    letter-spacing: 0 !important; font-size: .84rem !important; color: var(--text) !important; cursor: pointer; margin-top: 14px !important; }
+  .toggle input { accent-color: var(--gold); width: 16px; height: 16px; }
+  .admin-stat { font-size: .7rem; color: var(--muted); border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 11px; margin-top: 13px; line-height: 1.6; }
+
+  /* admin editor form */
+  .edit-form { padding: 26px 30px 32px; }
+  .edit-form h3 { margin: 22px 0 12px; font-family: "Playfair Display", serif; color: var(--gold);
+    font-size: .84rem; letter-spacing: 3px; text-transform: uppercase; }
+  .edit-form h3:first-of-type { margin-top: 0; }
+  .frow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .frow.one { grid-template-columns: 1fr; }
+  .frow + .frow { margin-top: 12px; }
+  .edit-form label { display: block; font-size: .68rem; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 5px; }
+  .edit-form input, .edit-form select, .edit-form textarea {
+    width: 100%; background: rgba(22,28,46,.85); color: var(--text); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 12px; font-size: .95rem; font-family: inherit; outline: none; }
+  .edit-form textarea { min-height: 96px; resize: vertical; line-height: 1.55; }
+  .edit-form input:focus, .edit-form select:focus, .edit-form textarea:focus {
+    border-color: var(--gold); box-shadow: 0 0 12px rgba(240,201,74,.25); }
+  .work-row { display: grid; grid-template-columns: 1fr 130px 38px; gap: 8px; margin-bottom: 8px; }
+  .work-row .w-x { border-radius: 10px; border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06); color: #f29a9e; cursor: pointer; font-size: 1rem; }
+  .work-row .w-x:hover { border-color: #f29a9e; }
+  .eactions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
+  .eactions .a-btn { width: auto; margin: 0; padding: 12px 22px; }
+  .eactions .spacer { flex: 1; }
+
+  .toast { position: fixed; left: 50%; bottom: 26px; z-index: 200; transform: translate(-50%, 20px);
+    padding: 12px 22px; border-radius: 999px; font-size: .82rem; font-weight: 650; opacity: 0;
+    pointer-events: none; transition: .3s; color: #04241d; background: linear-gradient(135deg, #9df3e0, var(--accent));
+    box-shadow: 0 14px 40px rgba(0,0,0,.55); }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
   @media (max-width: 640px) {
+    .frow { grid-template-columns: 1fr; }
+    .work-row { grid-template-columns: 1fr 96px 38px; }
+    .edit-form { padding: 20px 18px 26px; }
     .d-cover { height: 170px; }
     .d-head { padding: 0 18px; margin-top: -44px; gap: 12px; }
     .avatar.big { width: 84px; height: 84px; font-size: 2.5rem; }
@@ -331,6 +403,94 @@
 </aside>
 <div class="lightbox" id="lightbox"><img id="lightboxImg" alt="" /></div>
 
+<!-- ── Admin (localStorage only, no database) ── -->
+<button class="fab" id="fab" type="button" aria-haspopup="dialog">⚙ Admin</button>
+<div class="admin-pop" id="adminPop" hidden role="dialog" aria-label="Admin panel">
+  <form id="loginForm" autocomplete="on">
+    <h4>Admin Login</h4>
+    <label for="loginUser">Username</label>
+    <input id="loginUser" type="text" autocomplete="username" required />
+    <label for="loginPass">Password</label>
+    <input id="loginPass" type="password" autocomplete="current-password" required />
+    <p class="err" id="loginErr"></p>
+    <button class="a-btn gold" type="submit">Sign in</button>
+    <p class="hint" id="loginHint">No database — edits are saved in this browser only. Default: admin / admin123</p>
+  </form>
+
+  <div id="adminControls" hidden>
+    <h4>Admin Panel</h4>
+    <label class="toggle"><input type="checkbox" id="editModeChk" /> Edit mode — click any card to edit it</label>
+    <button class="a-btn gold" type="button" id="addBtn">+ New profile</button>
+    <button class="a-btn" type="button" id="cpBtn">Change login</button>
+    <div id="cpWrap" hidden>
+      <label for="cpUser">Username</label><input id="cpUser" type="text" />
+      <label for="cpPass">New password</label><input id="cpPass" type="password" />
+      <label for="cpPass2">Repeat password</label><input id="cpPass2" type="password" />
+      <p class="err" id="cpErr"></p>
+      <button class="a-btn gold" type="button" id="cpSave">Save login</button>
+    </div>
+    <button class="a-btn" type="button" id="exportBtn">Export JSON files</button>
+    <button class="a-btn danger" type="button" id="resetBtn">Reset all edits</button>
+    <button class="a-btn" type="button" id="logoutBtn">Log out</button>
+    <p class="admin-stat" id="adminStat"></p>
+  </div>
+</div>
+
+<div class="overlay" id="editOverlay"></div>
+<aside class="drawer" id="editDrawer" role="dialog" aria-modal="true" aria-label="Edit profile">
+  <div class="modal">
+    <button class="drawer-close" id="editClose" aria-label="Close editor">✕</button>
+    <form class="edit-form" id="editForm">
+      <h3 id="editHeading">Edit profile</h3>
+      <div class="frow">
+        <div><label for="eName">Name *</label><input id="eName" type="text" required /></div>
+        <div><label for="eTitle">Title</label><input id="eTitle" type="text" /></div>
+      </div>
+      <div class="frow">
+        <div><label for="eCountry">Country</label><input id="eCountry" type="text" /></div>
+        <div><label for="eRegion">Region</label><input id="eRegion" type="text" list="regionList" /></div>
+      </div>
+      <div class="frow">
+        <div><label for="eParty">Party</label><input id="eParty" type="text" /></div>
+        <div><label for="eEra">Era</label><input id="eEra" type="text" /></div>
+      </div>
+      <div class="frow">
+        <div><label for="eStatus">Status</label>
+          <select id="eStatus">
+            <option value="active">Active</option>
+            <option value="opposition">Opposition</option>
+            <option value="historical">Historical</option>
+          </select></div>
+        <div><label for="eRank">Global power rank (blank = none)</label><input id="eRank" type="number" min="1" /></div>
+      </div>
+      <div class="frow">
+        <div><label for="eIcon">Card icon (emoji, saved locally)</label><input id="eIcon" type="text" maxlength="4" /></div>
+      </div>
+      <div class="frow one" style="margin-top:12px">
+        <div><label for="eSummary">Summary</label><textarea id="eSummary"></textarea></div>
+      </div>
+      <h3>Famous Big Thought</h3>
+      <div class="frow one">
+        <div><label for="eThought">Quote</label><textarea id="eThought"></textarea></div>
+      </div>
+      <div class="frow">
+        <div><label for="eThoughtSrc">Source (e.g. Attributed)</label><input id="eThoughtSrc" type="text" /></div>
+      </div>
+      <h3>Notable Works</h3>
+      <div id="workRows"></div>
+      <button class="a-btn" type="button" id="addWork">+ Add work</button>
+      <p class="err" id="editErr"></p>
+      <div class="eactions">
+        <button class="a-btn gold" type="submit">Save changes</button>
+        <span class="spacer"></span>
+        <button class="a-btn danger" type="button" id="editDelete">Delete profile</button>
+      </div>
+    </form>
+  </div>
+</aside>
+<datalist id="regionList"></datalist>
+<div class="toast" id="toast"></div>
+
 <script>
 const grid = document.getElementById('grid');
 const q = document.getElementById('q');
@@ -345,6 +505,13 @@ const lightboxImg = document.getElementById('lightboxImg');
 let all = [];
 let WORKS = {};
 let THOUGHTS = {};
+let META_PROFILES = null, META_THOUGHTS = null;
+
+/* ── Admin: no database — login + all edits live in localStorage ── */
+const LS_DATA = 'don_admin_data_v1', LS_AUTH = 'don_admin_auth_v1', SS_ADMIN = 'don_admin_session_v1';
+let DATA = { profiles: [], works: {}, thoughts: {}, icons: {} };
+let isAdmin = sessionStorage.getItem(SS_ADMIN) === '1';
+let editMode = false, editingId = null, savedAt = '';
 
 /* unique war crest / icon per politician (fallback when photo missing) */
 const ICONS = {
@@ -380,29 +547,37 @@ const ICONS = {
 
 const loadJSON = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' → HTTP ' + r.status); return r.json(); });
 
-Promise.all([
-  loadJSON('politician_profiles.json'),
-  loadJSON('notable_works.json'),
-  loadJSON('famous_thoughts.json').catch(() => ({}))
-])
-  .then(([data, works, thoughts]) => {
-    all = data.profiles;
-    WORKS = works || {};
-    THOUGHTS = thoughts || {};
-    [...new Set(all.map(p => p.region).filter(Boolean))].sort().forEach(rg => {
-      const o = document.createElement('option'); o.value = rg; o.textContent = rg; regionSel.append(o);
-    });
-    const top = all.filter(p => p.global_power_rank).sort((a, b) => a.global_power_rank - b.global_power_rank);
-    document.getElementById('ranks').innerHTML = top.map(p =>
-      `<div class="rank" data-id="${esc(p.id)}" role="button" tabindex="0"><span class="ico">${icon(p)}</span><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('');
+async function boot() {
+  try {
+    const [data, works, thoughts] = await Promise.all([
+      loadJSON('politician_profiles.json'),
+      loadJSON('notable_works.json'),
+      loadJSON('famous_thoughts.json').catch(() => ({}))
+    ]);
+    META_PROFILES = data.metadata || null;
+    META_THOUGHTS = thoughts.metadata || null;
+    const baseThoughts = Object.fromEntries(Object.entries(thoughts || {}).filter(([k]) => k !== 'metadata'));
+    const saved = safeParse(localStorage.getItem(LS_DATA));
+    DATA = saved && Array.isArray(saved.profiles)
+      ? saved
+      : { profiles: data.profiles, works: works || {}, thoughts: baseThoughts, icons: {} };
+    if (!DATA.icons) DATA.icons = {};
+    bindData();
+    await ensureAuth();
+    syncAdminUI();
+    populateRegions();
+    renderRanks();
     render();
     const wantedId = new URLSearchParams(location.search).get('id');
     if (wantedId) openProfile(wantedId);
-  })
-  .catch(e => { countEl.textContent = 'Failed to load profile data — ' + e.message; });
+  } catch (e) {
+    countEl.textContent = 'Failed to load profile data — ' + e.message;
+  }
+}
+boot();
 
 function esc(s) { return (s ?? '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-function icon(p) { return ICONS[p.id] || '🏛️'; }
+function icon(p) { return (DATA.icons && DATA.icons[p.id]) || ICONS[p.id] || '🏛️'; }
 function img(path, alt, cls) {
   return `<img class="${cls || ''}" src="${path}" alt="${esc(alt)}" loading="lazy" onerror="this.remove()" />`;
 }
@@ -524,6 +699,10 @@ function openProfile(id) {
       </div>
     </div>
     <div class="d-body">
+      ${isAdmin ? `<div class="eactions" style="margin:0 0 6px;padding:0;border:0">
+        <button class="a-btn gold" type="button" data-edit="${esc(p.id)}">✎ Edit</button>
+        <button class="a-btn danger" type="button" data-del="${esc(p.id)}">Delete</button>
+      </div>` : ''}
       <section>
         <h3>Famous Big Thought</h3>
         <figure class="d-thought">
@@ -563,7 +742,7 @@ function openProfile(id) {
 
   drawer.classList.add('open');
   overlay.classList.add('show');
-  document.querySelector('.modal').scrollTop = 0;
+  document.querySelector('#drawer .modal').scrollTop = 0;
   history.replaceState(null, '', '?id=' + encodeURIComponent(id));
   document.body.style.overflow = 'hidden';
 }
@@ -575,31 +754,366 @@ function closeProfile() {
   if (location.search.includes('id=')) history.replaceState(null, '', location.pathname);
 }
 
+function cardAction(id) {
+  if (isAdmin && editMode) openEdit(id);
+  else openProfile(id);
+}
+
 grid.addEventListener('click', e => {
   const card = e.target.closest('.card');
-  if (card) openProfile(card.dataset.id);
+  if (card) cardAction(card.dataset.id);
 });
 grid.addEventListener('keydown', e => {
   if (e.key !== 'Enter' && e.key !== ' ') return;
   const card = e.target.closest('.card');
-  if (card) { e.preventDefault(); openProfile(card.dataset.id); }
+  if (card) { e.preventDefault(); cardAction(card.dataset.id); }
 });
 document.getElementById('ranks').addEventListener('click', e => {
   const r = e.target.closest('.rank');
-  if (r) openProfile(r.dataset.id);
+  if (r) cardAction(r.dataset.id);
 });
 document.getElementById('drawerClose').addEventListener('click', closeProfile);
 overlay.addEventListener('click', closeProfile);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeProfile(); closeEdit(); } });
 
 /* click an enlarged feature / work image */
 drawer.addEventListener('click', e => {
+  const editBtn = e.target.closest('[data-edit]');
+  if (editBtn) { closeProfile(); openEdit(editBtn.dataset.edit); return; }
+  const delBtn = e.target.closest('[data-del]');
+  if (delBtn) { deleteProfile(delBtn.dataset.del); return; }
   const fig = e.target.closest('.feat-item, .work-item');
   if (!fig || !e.target.closest('img')) return;
   lightboxImg.src = e.target.currentSrc || e.target.src;
   lightbox.classList.add('show');
 });
 lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
+
+/* ══ Admin engine — no database, localStorage only ══ */
+const fab = document.getElementById('fab');
+const adminPop = document.getElementById('adminPop');
+const loginForm = document.getElementById('loginForm');
+const loginErr = document.getElementById('loginErr');
+const loginHint = document.getElementById('loginHint');
+const adminControls = document.getElementById('adminControls');
+const adminStat = document.getElementById('adminStat');
+const editDrawer = document.getElementById('editDrawer');
+const editOverlay = document.getElementById('editOverlay');
+const editForm = document.getElementById('editForm');
+const editErr = document.getElementById('editErr');
+const workRows = document.getElementById('workRows');
+const toastEl = document.getElementById('toast');
+
+const safeParse = s => { try { return JSON.parse(s); } catch { return null; } };
+function bindData() { all = DATA.profiles; WORKS = DATA.works; THOUGHTS = DATA.thoughts; }
+
+let toastTimer;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+}
+
+function populateRegions() {
+  const cur = regionSel.value;
+  regionSel.innerHTML = '<option value="">All regions</option>';
+  [...new Set(all.map(p => p.region).filter(Boolean))].sort().forEach(rg => {
+    const o = document.createElement('option'); o.value = rg; o.textContent = rg; regionSel.append(o);
+  });
+  if ([...regionSel.options].some(o => o.value === cur)) regionSel.value = cur;
+  document.getElementById('regionList').innerHTML = [...new Set(all.map(p => p.region).filter(Boolean))]
+    .sort().map(rg => `<option value="${esc(rg)}"></option>`).join('');
+}
+
+function renderRanks() {
+  const top = all.filter(p => p.global_power_rank).sort((a, b) => a.global_power_rank - b.global_power_rank);
+  document.getElementById('ranks').innerHTML = top.length ? top.map(p =>
+    `<div class="rank" data-id="${esc(p.id)}" role="button" tabindex="0"><span class="ico">${icon(p)}</span><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('')
+    : '<p class="count">No ranked profiles.</p>';
+}
+
+/* after any data change: rebind, refresh UI */
+function refreshAll() {
+  bindData();
+  populateRegions();
+  renderRanks();
+  render();
+  updateStat();
+}
+
+function persist() {
+  try {
+    localStorage.setItem(LS_DATA, JSON.stringify(DATA));
+    savedAt = new Date().toLocaleString();
+    return true;
+  } catch (e) {
+    alert('Could not save to this browser: ' + e.message);
+    return false;
+  }
+}
+
+/* ── credentials (SHA-256 hashed, salted, in localStorage) ── */
+async function sha(str) {
+  if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return 'fnv-' + (h >>> 0).toString(16);
+}
+function rndSalt() {
+  const a = new Uint8Array(16);
+  if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(a);
+  else for (let i = 0; i < a.length; i++) a[i] = Math.floor(Math.random() * 256);
+  return Array.from(a).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+async function ensureAuth() {
+  let a = safeParse(localStorage.getItem(LS_AUTH));
+  if (!a || !a.user || !a.hash) {
+    const salt = rndSalt();
+    a = { user: 'admin', salt, hash: await sha(salt + ':admin123'), isDefault: true, tries: 0, until: 0 };
+    localStorage.setItem(LS_AUTH, JSON.stringify(a));
+  }
+}
+async function attemptLogin(user, pass) {
+  const a = safeParse(localStorage.getItem(LS_AUTH));
+  if (!a) return 'Admin account not initialised — reload the page.';
+  if (a.until && Date.now() < a.until)
+    return 'Too many attempts — locked for ' + Math.ceil((a.until - Date.now()) / 1000) + 's.';
+  if (user === a.user && (await sha(a.salt + ':' + pass)) === a.hash) {
+    localStorage.setItem(LS_AUTH, JSON.stringify({ ...a, tries: 0, until: 0 }));
+    return null;
+  }
+  const tries = (a.tries || 0) + 1;
+  const upd = { ...a, tries, until: tries >= 5 ? Date.now() + 30000 : 0 };
+  localStorage.setItem(LS_AUTH, JSON.stringify(upd));
+  if (upd.until) return 'Too many attempts — locked for 30 seconds.';
+  return 'Wrong username or password (' + tries + '/5).';
+}
+
+/* ── admin panel UI ── */
+function updateStat() {
+  const edited = !!localStorage.getItem(LS_DATA);
+  adminStat.innerHTML = `${all.length} profiles loaded<br>` +
+    (edited ? `Local edits saved ${esc(savedAt || 'earlier')} — browser storage only, no database.` : 'No local edits yet.');
+}
+async function syncAdminUI() {
+  const a = safeParse(localStorage.getItem(LS_AUTH)) || {};
+  fab.classList.toggle('on', isAdmin);
+  fab.textContent = isAdmin ? '⚙ Admin ✓' : '⚙ Admin';
+  loginForm.hidden = isAdmin;
+  adminControls.hidden = !isAdmin;
+  loginHint.hidden = !!a.isDefault === false || isAdmin;
+  if (isAdmin) {
+    document.getElementById('cpUser').value = a.user || 'admin';
+    updateStat();
+  }
+}
+function closeAdminPop() { adminPop.hidden = true; }
+
+fab.addEventListener('click', () => {
+  const opening = adminPop.hidden;
+  adminPop.hidden = !opening;
+  if (opening) {
+    loginErr.textContent = '';
+    if (isAdmin) updateStat();
+    else setTimeout(() => document.getElementById('loginUser').focus(), 30);
+  }
+});
+document.addEventListener('click', e => {
+  if (adminPop.hidden || adminPop.contains(e.target) || fab.contains(e.target)) return;
+  closeAdminPop();
+});
+
+loginForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  loginErr.textContent = '';
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const err = await attemptLogin(user, pass);
+  if (err) { loginErr.textContent = err; return; }
+  isAdmin = true;
+  sessionStorage.setItem(SS_ADMIN, '1');
+  document.getElementById('loginPass').value = '';
+  await syncAdminUI();
+  toast('Logged in — edit mode available');
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  isAdmin = false; editMode = false;
+  sessionStorage.removeItem(SS_ADMIN);
+  document.getElementById('editModeChk').checked = false;
+  closeEdit();
+  syncAdminUI();
+  closeAdminPop();
+  toast('Logged out');
+});
+
+document.getElementById('editModeChk').addEventListener('change', e => {
+  editMode = e.target.checked;
+  toast(editMode ? 'Edit mode ON — click any card to edit' : 'Edit mode OFF');
+});
+
+document.getElementById('addBtn').addEventListener('click', () => { closeAdminPop(); openEdit(null); });
+
+/* change login */
+const cpWrap = document.getElementById('cpWrap');
+document.getElementById('cpBtn').addEventListener('click', () => { cpWrap.hidden = !cpWrap.hidden; });
+document.getElementById('cpSave').addEventListener('click', async () => {
+  const cpErr = document.getElementById('cpErr');
+  cpErr.textContent = '';
+  const user = document.getElementById('cpUser').value.trim();
+  const p1 = document.getElementById('cpPass').value, p2 = document.getElementById('cpPass2').value;
+  if (!user) { cpErr.textContent = 'Username required.'; return; }
+  if (p1.length < 4) { cpErr.textContent = 'Password must be at least 4 characters.'; return; }
+  if (p1 !== p2) { cpErr.textContent = 'Passwords do not match.'; return; }
+  const a = safeParse(localStorage.getItem(LS_AUTH)) || {};
+  const salt = rndSalt();
+  localStorage.setItem(LS_AUTH, JSON.stringify({ user, salt, hash: await sha(salt + ':' + p1), isDefault: false, tries: 0, until: 0 }));
+  document.getElementById('cpPass').value = document.getElementById('cpPass2').value = '';
+  cpWrap.hidden = true;
+  toast('Login updated');
+});
+
+/* export the three JSON files (so edits can be committed back to the repo) */
+function download(name, obj) {
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+document.getElementById('exportBtn').addEventListener('click', () => {
+  download('politician_profiles.json', { metadata: META_PROFILES || { note: 'Exported from admin editor' }, profiles: DATA.profiles });
+  setTimeout(() => download('notable_works.json', DATA.works), 350);
+  setTimeout(() => download('famous_thoughts.json', { metadata: META_THOUGHTS || { note: 'Exported from admin editor' }, ...DATA.thoughts }), 700);
+  toast('Exporting 3 JSON files…');
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Discard ALL local edits and reload the original JSON files?')) return;
+  localStorage.removeItem(LS_DATA);
+  location.reload();
+});
+
+/* ── editor ── */
+function workRow(title, year) {
+  const div = document.createElement('div');
+  div.className = 'work-row';
+  div.innerHTML = `<input class="w-t" type="text" placeholder="Work title" value="${esc(title || '')}">
+    <input class="w-y" type="text" placeholder="Year" value="${esc(year || '')}">
+    <button type="button" class="w-x" aria-label="Remove work">✕</button>`;
+  div.querySelector('.w-x').addEventListener('click', () => div.remove());
+  return div;
+}
+document.getElementById('addWork').addEventListener('click', () => workRows.append(workRow('', '')));
+
+function openEdit(id) {
+  if (!isAdmin) return;
+  editingId = id;
+  editErr.textContent = '';
+  const p = id ? all.find(x => x.id === id) : null;
+  document.getElementById('editHeading').textContent = p ? 'Edit — ' + p.name : 'New profile';
+  document.getElementById('eName').value = p ? (p.name || '') : '';
+  document.getElementById('eTitle').value = p ? (p.title || '') : '';
+  document.getElementById('eCountry').value = p ? (p.country || '') : '';
+  document.getElementById('eRegion').value = p ? (p.region || '') : '';
+  document.getElementById('eParty').value = p ? (p.party || '') : '';
+  document.getElementById('eEra').value = p ? (p.era || '') : '';
+  document.getElementById('eStatus').value = p ? (p.status || 'historical') : 'historical';
+  document.getElementById('eRank').value = p && p.global_power_rank ? p.global_power_rank : '';
+  document.getElementById('eIcon').value = p ? icon(p) : '🏛️';
+  document.getElementById('eSummary').value = p ? (p.summary || '') : '';
+  const t = id ? THOUGHTS[id] : null;
+  document.getElementById('eThought').value = t ? (t.quote || '') : (p ? (p.thought || '') : '');
+  document.getElementById('eThoughtSrc').value = t && t.source ? t.source : '';
+  workRows.innerHTML = '';
+  const works = (id && WORKS[id]) || [];
+  (works.length ? works : [['', '']]).forEach(w => workRows.append(workRow(w[0], w[1])));
+  document.getElementById('editDelete').style.display = p ? '' : 'none';
+  editDrawer.classList.add('open');
+  editOverlay.classList.add('show');
+  document.querySelector('#editDrawer .modal').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('eName').focus(), 60);
+}
+
+function closeEdit() {
+  editDrawer.classList.remove('open');
+  editOverlay.classList.remove('show');
+  if (!drawer.classList.contains('open')) document.body.style.overflow = '';
+}
+document.getElementById('editClose').addEventListener('click', closeEdit);
+editOverlay.addEventListener('click', closeEdit);
+
+function slugify(s) {
+  return s.toLowerCase().replace(/['’.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'profile';
+}
+function uniqueId(base) {
+  let id = base, n = 2;
+  while (all.some(p => p.id === id)) id = base + '-' + n++;
+  return id;
+}
+
+document.getElementById('editDelete').addEventListener('click', () => {
+  if (editingId) deleteProfile(editingId, true);
+});
+function deleteProfile(id, fromEditor) {
+  const p = all.find(x => x.id === id);
+  if (!p) return;
+  if (!confirm('Delete "' + p.name + '" permanently (from this browser)?')) return;
+  DATA.profiles = DATA.profiles.filter(x => x.id !== id);
+  delete DATA.works[id];
+  delete DATA.thoughts[id];
+  delete DATA.icons[id];
+  persist();
+  if (fromEditor) closeEdit();
+  closeProfile();
+  refreshAll();
+  toast('Deleted ' + p.name);
+}
+
+editForm.addEventListener('submit', e => {
+  e.preventDefault();
+  editErr.textContent = '';
+  const name = document.getElementById('eName').value.trim();
+  if (!name) { editErr.textContent = 'Name is required.'; return; }
+  let p = editingId ? all.find(x => x.id === editingId) : null;
+  if (!p) {
+    p = { id: uniqueId(slugify(name)) };
+    DATA.profiles.push(p);
+  }
+  p.name = name;
+  p.title = document.getElementById('eTitle').value.trim() || null;
+  p.country = document.getElementById('eCountry').value.trim() || null;
+  p.region = document.getElementById('eRegion').value.trim() || null;
+  p.party = document.getElementById('eParty').value.trim() || null;
+  p.era = document.getElementById('eEra').value.trim() || null;
+  p.status = document.getElementById('eStatus').value;
+  const rank = parseInt(document.getElementById('eRank').value, 10);
+  if (rank > 0) p.global_power_rank = rank; else delete p.global_power_rank;
+  const ic = document.getElementById('eIcon').value.trim();
+  if (ic && ic !== ICONS[p.id]) DATA.icons[p.id] = ic; else delete DATA.icons[p.id];
+  p.summary = document.getElementById('eSummary').value.trim();
+
+  const quote = document.getElementById('eThought').value.trim();
+  const src = document.getElementById('eThoughtSrc').value.trim();
+  if (quote) DATA.thoughts[p.id] = src ? { quote, source: src } : { quote };
+  else delete DATA.thoughts[p.id];
+
+  const works = [...workRows.querySelectorAll('.work-row')]
+    .map(r => [r.querySelector('.w-t').value.trim(), r.querySelector('.w-y').value.trim()])
+    .filter(w => w[0]);
+  if (works.length) DATA.works[p.id] = works; else delete DATA.works[p.id];
+
+  persist();
+  editingId = p.id;
+  closeEdit();
+  refreshAll();
+  toast('Saved — ' + p.name);
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,1020 @@
+{
+  "metadata": {
+    "title": "Politician Profiles — 100 Leaders",
+    "profile_count": 100,
+    "generated": "2026-10-15",
+    "structure": "Flat list of profile objects; not grouped by country",
+    "note": "Entries follow the provided source text as-is, which contains some alternate-scenario claims (e.g., Barack Obama listed as sitting U.S. president, Angela Rayner as U.K. prime minister)."
+  },
+  "profiles": [
+    {
+      "id": "genghis-khan",
+      "name": "Genghis Khan",
+      "title": "Founder & Great Khan of the Mongol Empire",
+      "party": null,
+      "country": "Mongol Empire",
+      "region": "Asia",
+      "status": "historical",
+      "era": "1162–1227",
+      "summary": "Founder of the largest contiguous land empire in history. He unified the nomadic tribes of Northeast Asia and reshaped global trade, demographics, and cross-continental communication through immense military strategy."
+    },
+    {
+      "id": "alexander-the-great",
+      "name": "Alexander the Great",
+      "title": "King of Macedon",
+      "party": null,
+      "country": "Macedonian Empire",
+      "region": "Europe / Asia",
+      "status": "historical",
+      "era": "356–323 BC",
+      "summary": "Undefeated military tactician. He conquered the Persian Empire and expanded Hellenistic civilization across Greece, Egypt, and into western India, permanently blending Western and Eastern cultures."
+    },
+    {
+      "id": "julius-caesar",
+      "name": "Julius Caesar",
+      "title": "General & Dictator of the Roman Republic",
+      "party": null,
+      "country": "Roman Republic / Empire",
+      "region": "Europe",
+      "status": "historical",
+      "era": "100–44 BC",
+      "summary": "Architect of the Roman Empire. His aggressive military expansions through Gaul and masterful political maneuvering effectively dismantled the Roman Republic, laying the institutional foundation for the Pax Romana."
+    },
+    {
+      "id": "napoleon-bonaparte",
+      "name": "Napoleon Bonaparte",
+      "title": "Emperor of the French",
+      "party": null,
+      "country": "French Empire",
+      "region": "Europe",
+      "status": "historical",
+      "era": "1769–1821",
+      "summary": "Global legal and military reformer. Beyond conquering most of continental Europe, he codified the Napoleonic Code, which established modern civic legal frameworks used across dozens of countries today."
+    },
+    {
+      "id": "abraham-lincoln",
+      "name": "Abraham Lincoln",
+      "title": "16th President of the United States",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "historical",
+      "era": "1809–1865",
+      "summary": "The premier democratic unifier. He preserved the Union during the American Civil War, abolished slavery via the Emancipation Proclamation, and redefined the modern constitutional governance framework."
+    },
+    {
+      "id": "vladimir-putin",
+      "name": "Vladimir Putin",
+      "title": "President of the Russian Federation",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Russia's dominant leader, wielding centralized authority over the state, security services, and foreign policy across Eurasia and beyond."
+    },
+    {
+      "id": "mikhail-mishustin",
+      "name": "Mikhail Mishustin",
+      "title": "Prime Minister of Russia",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Head of government overseeing Russia's civil administration, economic management, and federal policy execution."
+    },
+    {
+      "id": "sergey-lavrov",
+      "name": "Sergey Lavrov",
+      "title": "Minister of Foreign Affairs of Russia",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Russia's veteran diplomat and chief voice on the world stage, directing foreign policy across decades of global realignment."
+    },
+    {
+      "id": "andrey-belousov",
+      "name": "Andrey Belousov",
+      "title": "Minister of Defence of Russia",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Head of the defense establishment and former First Deputy Prime Minister, steering Russia's wartime economy and military strategy."
+    },
+    {
+      "id": "sergey-sobyanin",
+      "name": "Sergey Sobyanin",
+      "title": "Mayor of Moscow",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Chief executive of the Russian capital, overseeing megacity administration, urban development, and security coordination."
+    },
+    {
+      "id": "dmitry-peskov",
+      "name": "Dmitry Peskov",
+      "title": "Presidential Press Secretary / Kremlin Spokesperson",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "The Kremlin's principal voice, shaping official narratives and communicating the leadership's positions to the world."
+    },
+    {
+      "id": "dmitry-medvedev",
+      "name": "Dmitry Medvedev",
+      "title": "Deputy Chairman of the Security Council",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Former President and Prime Minister now holding a senior security-state role, known for hardline national-security rhetoric."
+    },
+    {
+      "id": "vyacheslav-volodin",
+      "name": "Vyacheslav Volodin",
+      "title": "Chairman of the State Duma",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Speaker of Russia's lower house of parliament, controlling the legislative agenda and floor proceedings."
+    },
+    {
+      "id": "gennady-zyuganov",
+      "name": "Gennady Zyuganov",
+      "title": "Leader of the Communist Party of the Russian Federation",
+      "party": "Communist Party of the Russian Federation (CPRF)",
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Longtime leader of Russia's principal opposition communist party and a fixture of national parliamentary politics."
+    },
+    {
+      "id": "valentina-matviyenko",
+      "name": "Valentina Matviyenko",
+      "title": "Chairperson of the Federation Council",
+      "party": null,
+      "country": "Russia",
+      "region": "Eurasia",
+      "status": "active",
+      "summary": "Speaker of Russia's upper house and one of the highest-ranking officials in the country's political establishment."
+    },
+    {
+      "id": "narendra-modi",
+      "name": "Narendra Modi",
+      "title": "Prime Minister of India",
+      "party": "Bharatiya Janata Party (BJP)",
+      "country": "India",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of government and BJP leader, commanding large-scale national policymaking and India's strategic direction on the world stage."
+    },
+    {
+      "id": "yogi-adityanath",
+      "name": "Yogi Adityanath",
+      "title": "Chief Minister of Uttar Pradesh",
+      "party": "Bharatiya Janata Party (BJP)",
+      "country": "India",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of India's most populous state and a prominent national figure within the BJP's political movement."
+    },
+    {
+      "id": "j-p-nadda",
+      "name": "J.P. Nadda",
+      "title": "National President of the BJP",
+      "party": "Bharatiya Janata Party (BJP)",
+      "country": "India",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Party chief directing the organizational machinery and electoral strategy of India's ruling party."
+    },
+    {
+      "id": "mallikarjun-kharge",
+      "name": "Mallikarjun Kharge",
+      "title": "President of the Indian National Congress; Leader of the Opposition in the Rajya Sabha",
+      "party": "Indian National Congress",
+      "country": "India",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Leads India's main opposition party and its parliamentary bloc in the upper house, anchoring the anti-incumbent alliance."
+    },
+    {
+      "id": "benjamin-netanyahu",
+      "name": "Benjamin Netanyahu",
+      "title": "Prime Minister of Israel",
+      "party": "Likud",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "active",
+      "summary": "Israel's longest-serving leader, heading the incumbent right-wing government through a volatile security and political era."
+    },
+    {
+      "id": "gadi-eisenkot",
+      "name": "Gadi Eisenkot",
+      "title": "Party Leader, Yashar",
+      "party": "Yashar",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Former IDF Chief of Staff leading a major center-right/centrist challenge to Netanyahu."
+    },
+    {
+      "id": "naftali-bennett",
+      "name": "Naftali Bennett",
+      "title": "Party Co-Leader, Beyachad (Together)",
+      "party": "Beyachad (Together)",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Former Prime Minister who returned to frontline politics via an alliance with Yair Lapid."
+    },
+    {
+      "id": "yair-lapid",
+      "name": "Yair Lapid",
+      "title": "Opposition Leader; Leader, Yesh Atid",
+      "party": "Yesh Atid",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Former Prime Minister and leader of the central opposition bloc."
+    },
+    {
+      "id": "benny-gantz",
+      "name": "Benny Gantz",
+      "title": "Party Leader, Blue and White",
+      "party": "Blue and White",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Former Defense Minister and former IDF Chief of Staff leading a centrist security-focused party."
+    },
+    {
+      "id": "itamar-ben-gvir",
+      "name": "Itamar Ben-Gvir",
+      "title": "National Security Minister; Leader, Otzma Yehudit",
+      "party": "Otzma Yehudit (Jewish Power)",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "active",
+      "summary": "Far-right National Security Minister advocating a hardline security platform."
+    },
+    {
+      "id": "bezalel-smotrich",
+      "name": "Bezalel Smotrich",
+      "title": "Finance Minister; Leader, Religious Zionist Party",
+      "party": "Religious Zionist Party",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "active",
+      "summary": "Finance Minister and prominent figure of the national-religious right."
+    },
+    {
+      "id": "aryeh-deri",
+      "name": "Aryeh Deri",
+      "title": "Leader, Shas",
+      "party": "Shas",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "active",
+      "summary": "Leader of the ultra-Orthodox Sephardic Shas party and key coalition powerbroker."
+    },
+    {
+      "id": "avigdor-lieberman",
+      "name": "Avigdor Lieberman",
+      "title": "Party Leader, Yisrael Beiteinu",
+      "party": "Yisrael Beiteinu",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Secular right-wing opposition leader and former defense and foreign minister."
+    },
+    {
+      "id": "yair-golan",
+      "name": "Yair Golan",
+      "title": "Party Leader, The Democrats",
+      "party": "The Democrats",
+      "country": "Israel",
+      "region": "Middle East",
+      "status": "opposition",
+      "summary": "Former senior IDF commander leading the merged left-of-center Democratic party bloc."
+    },
+    {
+      "id": "abdel-fattah-el-sisi",
+      "name": "Abdel Fattah el-Sisi",
+      "title": "President of Egypt",
+      "party": null,
+      "country": "Egypt",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Commands the most powerful military force in Africa, exerting immense regional authority over Red Sea and North African geopolitics with an uncompromising approach to state security."
+    },
+    {
+      "id": "paul-kagame",
+      "name": "Paul Kagame",
+      "title": "President of Rwanda",
+      "party": null,
+      "country": "Rwanda",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Regarded as one of Africa's most formidable leaders, globally recognized for highly disciplined governance and sharp rebukes of Western interference."
+    },
+    {
+      "id": "abiy-ahmed",
+      "name": "Abiy Ahmed",
+      "title": "Prime Minister of Ethiopia",
+      "party": null,
+      "country": "Ethiopia",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Controls the Horn of Africa's dominant military power, known for assertive foreign policy and open defiance of neighboring coalitions over Red Sea access and regional sovereignty."
+    },
+    {
+      "id": "ibrahima-traore",
+      "name": "Ibrahim Traoré",
+      "title": "Head of the Military Junta of Burkina Faso",
+      "party": null,
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Populist military leader who seized power in a coup, aggressively deploying anti-colonial pan-African rhetoric backed by heavily fortified presidential security."
+    },
+    {
+      "id": "assimi-goita",
+      "name": "Assimi Goïta",
+      "title": "Head of the Military Junta of Mali",
+      "party": null,
+      "country": "Mali",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Core figure of West Africa's shift toward military governance, having severed traditional European defense ties in favor of alternative security partnerships."
+    },
+    {
+      "id": "teodoro-obiang",
+      "name": "Teodoro Obiang Nguema Mbasogo",
+      "title": "President of Equatorial Guinea",
+      "party": null,
+      "country": "Equatorial Guinea",
+      "region": "Africa",
+      "status": "active",
+      "summary": "The world's longest-serving current president, maintaining absolute internal authority and strict security structures to insulate his regime from dissent."
+    },
+    {
+      "id": "yoweri-museveni",
+      "name": "Yoweri Museveni",
+      "title": "President of Uganda",
+      "party": null,
+      "country": "Uganda",
+      "region": "Africa",
+      "status": "active",
+      "summary": "In power since 1986, commanding a formidable regional military intelligence network and using state power to suppress domestic opposition."
+    },
+    {
+      "id": "isaias-afwerki",
+      "name": "Isaias Afwerki",
+      "title": "President of Eritrea",
+      "party": null,
+      "country": "Eritrea",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Heads a highly militarized, closed state structure, maintaining total domestic authority through compulsory national service and isolationist policies."
+    },
+    {
+      "id": "julius-malema",
+      "name": "Julius Malema",
+      "title": "Leader of the Economic Freedom Fighters",
+      "party": "Economic Freedom Fighters",
+      "country": "South Africa",
+      "region": "Africa",
+      "status": "opposition",
+      "summary": "Not a head of state, but widely considered one of Africa's most powerful and rhetorically aggressive politicians, commanding influence via radical economic and populist anti-establishment platforms."
+    },
+    {
+      "id": "emmerson-mnangagwa",
+      "name": "Emmerson Mnangagwa",
+      "title": "President of Zimbabwe",
+      "party": null,
+      "country": "Zimbabwe",
+      "region": "Africa",
+      "status": "active",
+      "summary": "Known as \"The Crocodile,\" he maintains an unyielding grip on political power backed by state security forces to deter opposition movements."
+    },
+    {
+      "id": "xi-jinping",
+      "name": "Xi Jinping",
+      "title": "General Secretary of the CCP; President of China; Chairman of the Central Military Commission",
+      "party": "Chinese Communist Party",
+      "country": "China",
+      "region": "Asia",
+      "status": "active",
+      "summary": "China's Paramount Leader, wielding absolute authority over the party, state, and military. Considered the nation's most powerful ruler since Mao Zedong."
+    },
+    {
+      "id": "li-qiang",
+      "name": "Li Qiang",
+      "title": "Premier of the State Council",
+      "party": "Chinese Communist Party",
+      "country": "China",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of China's government holding the highest civil service rank, overseeing the state bureaucracy, economic policy coordination, and execution of national development plans."
+    },
+    {
+      "id": "zhao-leji",
+      "name": "Zhao Leji",
+      "title": "Chairman of the NPC Standing Committee",
+      "party": "Chinese Communist Party",
+      "country": "China",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of China's legislature, leading the top state body responsible for legislation, constitutional supervision, and high-level foreign diplomatic outreach."
+    },
+    {
+      "id": "mark-carney",
+      "name": "Mark Carney",
+      "title": "Prime Minister of Canada",
+      "party": "Liberal Party of Canada",
+      "country": "Canada",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Head of government after taking office following Justin Trudeau's resignation and winning a national mandate. The former Governor of the Bank of Canada and Bank of England commands authority over the federal bureaucracy, focusing on economic strategy and trade and tariff dynamics."
+    },
+    {
+      "id": "pierre-poilievre",
+      "name": "Pierre Poilievre",
+      "title": "Leader of the Conservative Party / Leader of the Opposition",
+      "party": "Conservative Party of Canada",
+      "country": "Canada",
+      "region": "Americas",
+      "status": "opposition",
+      "summary": "Leader of the Official Opposition, commanding a powerful conservative movement centered on a low-tax, small-government platform as the primary challenger to the government."
+    },
+    {
+      "id": "lee-jae-myung",
+      "name": "Lee Jae-myung",
+      "title": "President of South Korea",
+      "party": "Democratic Party of Korea",
+      "country": "South Korea",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of state and government after winning the early snap election, with control of the executive branch and parliament. His administration centers on national reconciliation, welfare expansion, economic stabilization, and de-escalating tensions with North Korea."
+    },
+    {
+      "id": "kim-min-seok",
+      "name": "Kim Min-seok",
+      "title": "Prime Minister of South Korea",
+      "party": "Democratic Party of Korea",
+      "country": "South Korea",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Second-in-command of the executive branch, overseeing the domestic civil service and state administrative coordination, and executing the ruling party's legislative and economic priorities."
+    },
+    {
+      "id": "woo-won-shik",
+      "name": "Woo Won-shik",
+      "title": "Speaker of the National Assembly",
+      "party": "Democratic Party of Korea",
+      "country": "South Korea",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of the legislative branch, controlling the National Assembly's agenda and holding immense influence over budgets, policy initiatives, and regulatory updates."
+    },
+    {
+      "id": "kim-jong-un",
+      "name": "Kim Jong Un",
+      "title": "General Secretary of the WPK; President of the State Affairs Commission; Supreme Commander of the Armed Forces",
+      "party": "Workers' Party of Korea (WPK)",
+      "country": "North Korea",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Supreme Leader of North Korea and third generational ruler of the Kim dynasty, maintaining total absolute control over party, state, and military. Every major directive, foreign policy shift, and strategic nuclear decision flows from his command."
+    },
+    {
+      "id": "kim-tok-hun",
+      "name": "Kim Tok Hun",
+      "title": "Premier of the Cabinet",
+      "party": "Workers' Party of Korea (WPK)",
+      "country": "North Korea",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of government and Presidium Politburo member, overseeing civil administration, the national economy, and state production, frequently conducting high-level inspections for the central leadership."
+    },
+    {
+      "id": "donald-trump",
+      "name": "Donald Trump",
+      "title": "President of the United States",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Ranked Europe's most powerful figure by POLITICO despite being outside the continent, due to supreme leverage over European defense budgets, NATO strategic shifts, and trade tariffs."
+    },
+    {
+      "id": "mette-frederiksen",
+      "name": "Mette Frederiksen",
+      "title": "Prime Minister of Denmark",
+      "party": null,
+      "country": "Denmark",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The North Star.\" A dominant, pragmatic voice leading smaller European nations in hardline border management, defense scaling, and standing firm against security pressures."
+    },
+    {
+      "id": "friedrich-merz",
+      "name": "Friedrich Merz",
+      "title": "Chancellor of Germany",
+      "party": null,
+      "country": "Germany",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The Reluctant Radical.\" Wields immense clout as leader of Europe's largest economy, executing immigration rollbacks and industrial adjustments to keep Germany competitive."
+    },
+    {
+      "id": "marine-le-pen",
+      "name": "Marine Le Pen",
+      "title": "Leader of National Rally",
+      "party": "National Rally",
+      "country": "France",
+      "region": "Europe",
+      "status": "opposition",
+      "summary": "\"The Warhorse.\" Holds immense disruptive power over French and European legislative spaces, driving the continent-wide surge toward populist right-wing governance and standing as a frontrunner for the 2027 presidential race."
+    },
+    {
+      "id": "nigel-farage",
+      "name": "Nigel Farage",
+      "title": "Leader of Reform UK",
+      "party": "Reform UK",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "status": "opposition",
+      "summary": "\"The Populist Trailblazer.\" A highly influential right-wing provocateur whose populist rhetoric continues to disrupt mainstream politics across the UK and continental Europe."
+    },
+    {
+      "id": "ursula-von-der-leyen",
+      "name": "Ursula von der Leyen",
+      "title": "President of the European Commission",
+      "party": null,
+      "country": "European Union",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The Institutional Architect.\" Oversees the EU's executive arm, directing massive continental climate investments, security frameworks, and regulatory mandates."
+    },
+    {
+      "id": "mark-rutte",
+      "name": "Mark Rutte",
+      "title": "Secretary-General of NATO",
+      "party": null,
+      "country": "NATO",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The Transatlantic Anchor.\" The former Dutch PM guides Europe's military alliance, balancing European sovereignty with volatile defense dependencies."
+    },
+    {
+      "id": "giorgia-meloni",
+      "name": "Giorgia Meloni",
+      "title": "Prime Minister of Italy",
+      "party": null,
+      "country": "Italy",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The Right-Wing Pragmatist.\" Blends staunch nationalist policies with functional pro-Brussels diplomacy, proving highly influential on continental migration pacts."
+    },
+    {
+      "id": "keir-starmer",
+      "name": "Keir Starmer",
+      "title": "Prime Minister of the United Kingdom (per the Europe ranking)",
+      "party": null,
+      "country": "United Kingdom",
+      "region": "Europe",
+      "status": "active",
+      "summary": "\"The Centrist Counterweight.\" Directs the UK's massive geopolitical repositioning as a stable, rule-based ally seeking closer security pacts with European nations."
+    },
+    {
+      "id": "anthony-albanese",
+      "name": "Anthony Albanese",
+      "title": "Prime Minister of Australia",
+      "party": "Australian Labor Party",
+      "country": "Australia",
+      "region": "Oceania",
+      "status": "active",
+      "summary": "Head of government and Labor leader, commanding the party and directing national policy, legislative agendas, and the government's broader direction."
+    },
+    {
+      "id": "jim-chalmers",
+      "name": "Jim Chalmers",
+      "title": "Federal Treasurer of Australia",
+      "party": "Australian Labor Party",
+      "country": "Australia",
+      "region": "Oceania",
+      "status": "active",
+      "summary": "Wields immense institutional power over the national economy, managing the federal budget, economic strategy, and major tax policy updates."
+    },
+    {
+      "id": "peter-dutton",
+      "name": "Peter Dutton",
+      "title": "Leader of the Opposition; Head of the Liberal Party",
+      "party": "Liberal Party of Australia",
+      "country": "Australia",
+      "region": "Oceania",
+      "status": "opposition",
+      "summary": "The primary political challenger to the government, coordinating the opposition bloc's parliamentary strategy and wielding significant sway over conservative policy."
+    },
+    {
+      "id": "penny-wong",
+      "name": "Penny Wong",
+      "title": "Minister for Foreign Affairs; Leader of the Government in the Senate",
+      "party": "Australian Labor Party",
+      "country": "Australia",
+      "region": "Oceania",
+      "status": "active",
+      "summary": "Shapes Australia's international diplomacy, driving critical strategic relations across the Pacific and managing the government's foreign policy framework."
+    },
+    {
+      "id": "mark-butler",
+      "name": "Mark Butler",
+      "title": "Minister for Health and Aged Care",
+      "party": "Australian Labor Party",
+      "country": "Australia",
+      "region": "Oceania",
+      "status": "active",
+      "summary": "A dominant legislative force managing key high-stakes federal spending portfolios, including major overhauls to the National Disability Insurance Scheme (NDIS)."
+    },
+    {
+      "id": "emmanuel-macron",
+      "name": "Emmanuel Macron",
+      "title": "President of France",
+      "party": "Renaissance",
+      "country": "France",
+      "region": "Europe",
+      "status": "active",
+      "summary": "Head of state and commander-in-chief, managing France's executive strategy, foreign policy, and global representation while navigating a deeply polarized national landscape."
+    },
+    {
+      "id": "sebastien-lecornu",
+      "name": "Sébastien Lecornu",
+      "title": "Prime Minister of France",
+      "party": "Renaissance",
+      "country": "France",
+      "region": "Europe",
+      "status": "active",
+      "summary": "Head of government appointed after serving as Defense Minister, tasked with building consensus across a highly fractured parliament to pass national budgets."
+    },
+    {
+      "id": "angela-rayner",
+      "name": "Angela Rayner",
+      "title": "Prime Minister of the United Kingdom (per the U.K. ranking)",
+      "party": "Labour Party",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "status": "active",
+      "summary": "Head of state and government after stepping into 10 Downing Street, balancing centrist and left-wing party factions while directing the state apparatus and international trade and security negotiations."
+    },
+    {
+      "id": "rachel-reeves",
+      "name": "Rachel Reeves",
+      "title": "Chancellor of the Exchequer",
+      "party": "Labour Party",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "status": "active",
+      "summary": "Chief fiscal officer of the UK, holding decisive power over the national budget and economic strategy."
+    },
+    {
+      "id": "kemi-badenoch",
+      "name": "Kemi Badenoch",
+      "title": "Leader of the Opposition / Conservative Party",
+      "party": "Conservative Party",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "status": "opposition",
+      "summary": "Leader of the UK opposition, directing the Conservative Party's strategy as its principal counterweight to the government."
+    },
+    {
+      "id": "shehbaz-sharif",
+      "name": "Shehbaz Sharif",
+      "title": "Prime Minister of Pakistan",
+      "party": "Pakistan Muslim League-Nawaz (PML-N)",
+      "country": "Pakistan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of government holding direct institutional power over civil administration, economic stabilization programs, and federal policy execution."
+    },
+    {
+      "id": "imran-khan",
+      "name": "Imran Khan",
+      "title": "Founder of Pakistan Tehreek-e-Insaf; Opposition Leader",
+      "party": "Pakistan Tehreek-e-Insaf (PTI)",
+      "country": "Pakistan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "PTI founder who, despite legal challenges and incarceration, retains massive highly passionate public popularity as the primary anti-establishment populist symbol."
+    },
+    {
+      "id": "asif-ali-zardari",
+      "name": "Asif Ali Zardari",
+      "title": "President of Pakistan",
+      "party": "Pakistan Peoples Party (PPP)",
+      "country": "Pakistan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of state and PPP co-chairman, acting as a master political strategist and the crucial powerbroker anchoring the governing coalition."
+    },
+    {
+      "id": "bilawal-bhutto-zardari",
+      "name": "Bilawal Bhutto Zardari",
+      "title": "Chairman of the Pakistan Peoples Party",
+      "party": "Pakistan Peoples Party (PPP)",
+      "country": "Pakistan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Next-generation leader driving the legislative and structural direction of one of Pakistan's largest mainstream parties, holding a firm stronghold in Sindh province."
+    },
+    {
+      "id": "barack-obama",
+      "name": "Barack Obama",
+      "title": "President of the United States (per the provided text)",
+      "party": "Democratic",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Head of state and government per the source text, ranking first in its U.S. power list — commanding authority over the executive branch, the military, and the direction of the Democratic Party."
+    },
+    {
+      "id": "jd-vance",
+      "name": "JD Vance",
+      "title": "Vice President of the United States",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Second-in-command of the executive branch and constitutional President of the Senate, a primary architect of the administration's populist economic and domestic policy framework."
+    },
+    {
+      "id": "mike-johnson",
+      "name": "Mike Johnson",
+      "title": "Speaker of the House",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Head of the legislative branch, controlling the House calendar, budget negotiations, and bill scheduling, with immense leverage over federal spending."
+    },
+    {
+      "id": "john-thune",
+      "name": "John Thune",
+      "title": "Senate Majority Leader",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Senate gatekeeper directing the legislative agenda, controlling floor votes, and overseeing confirmations of executive appointments and judicial nominations."
+    },
+    {
+      "id": "hakeem-jeffries",
+      "name": "Hakeem Jeffries",
+      "title": "House Minority Leader",
+      "party": "Democratic",
+      "country": "United States",
+      "region": "Americas",
+      "status": "opposition",
+      "summary": "Highest-ranking Black lawmaker in U.S. history, wielding institutional control over House Democratic strategy, legislative resistance, and unified voting blocs."
+    },
+    {
+      "id": "wes-moore",
+      "name": "Wes Moore",
+      "title": "Governor of Maryland",
+      "party": "Democratic",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "As Maryland's first Black governor, he manages a major state bureaucracy with executive authority over large fiscal budgets, law enforcement, and public policy."
+    },
+    {
+      "id": "tim-scott",
+      "name": "Tim Scott",
+      "title": "U.S. Senator (South Carolina)",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Leading Black conservative powerbroker with major sway over financial regulatory frameworks in the Senate and national influence as an architect of conservative economic policy."
+    },
+    {
+      "id": "jerome-powell",
+      "name": "Jerome Powell",
+      "title": "Chair of the Federal Reserve",
+      "party": "Independent",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Economic architect wielding immense control over the global economy through monetary policy, interest rates, and financial regulation."
+    },
+    {
+      "id": "elon-musk",
+      "name": "Elon Musk",
+      "title": "Government Efficiency Advisor",
+      "party": "Republican (affiliate)",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "External system disruptor wielding substantial influence over federal bureaucracy streamlining, regulatory structures, and industrial tech policy."
+    },
+    {
+      "id": "ron-desantis",
+      "name": "Ron DeSantis",
+      "title": "Governor of Florida",
+      "party": "Republican",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "State executive leader shaping the conservative movement's national culture war and state-level legislative strategies."
+    },
+    {
+      "id": "gavin-newsom",
+      "name": "Gavin Newsom",
+      "title": "Governor of California",
+      "party": "Democratic",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Progressive counterweight leading the nation's most populous state, using California's economic weight to implement progressive templates on climate and civil rights."
+    },
+    {
+      "id": "alexandria-ocasio-cortez",
+      "name": "Alexandria Ocasio-Cortez",
+      "title": "U.S. Representative",
+      "party": "Democratic",
+      "country": "United States",
+      "region": "Americas",
+      "status": "active",
+      "summary": "Grassroots ideologue and highly influential progressive communicator, shifting mainstream debates on climate action and economic reform from within Congress."
+    },
+    {
+      "id": "sajith-premadasa",
+      "name": "Sajith Premadasa",
+      "title": "Leader of the Opposition; Leader of the SJB",
+      "party": "Samagi Jana Balawegaya (SJB)",
+      "country": "Sri Lanka",
+      "region": "Asia",
+      "status": "opposition",
+      "summary": "Heads the Samagi Jana Balawegaya, the primary centrist legislative counterweight to the Marxist-leaning NPP government."
+    },
+    {
+      "id": "vijitha-herath",
+      "name": "Vijitha Herath",
+      "title": "Minister of Foreign Affairs",
+      "party": "National People's Power (NPP)",
+      "country": "Sri Lanka",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Key ruling strategist directing international diplomacy and managing regional ties between India and China for the NPP government."
+    },
+    {
+      "id": "namal-rajapaksa",
+      "name": "Namal Rajapaksa",
+      "title": "Opposition Member of Parliament",
+      "party": "Sri Lanka Podujana Peramuna (SLPP)",
+      "country": "Sri Lanka",
+      "region": "Asia",
+      "status": "opposition",
+      "summary": "Next-generation leader of a major political family wielding significant backbench influence while rebuilding the traditionalist SLPP movement."
+    },
+    {
+      "id": "tshering-tobgay",
+      "name": "Tshering Tobgay",
+      "title": "Prime Minister of Bhutan",
+      "party": "People's Democratic Party (PDP)",
+      "country": "Bhutan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Head of government overseeing the executive cabinet, state development, and crucial bilateral economic pacts with India under Bhutan's democratic monarchy."
+    },
+    {
+      "id": "sangay-dorji",
+      "name": "Sangay Dorji",
+      "title": "Chairperson of the National Council",
+      "party": "Independent",
+      "country": "Bhutan",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Commands Bhutan's non-partisan upper house of parliament, ensuring legislative checks and balancing regional interests."
+    },
+    {
+      "id": "balendra-shah",
+      "name": "Balendra Shah",
+      "title": "Prime Minister of Nepal (per the provided text)",
+      "party": null,
+      "country": "Nepal",
+      "region": "Asia",
+      "status": "active",
+      "summary": "The Populist Youth Wave. The former structural engineer and hip-hop star became Nepal's youngest-ever prime minister after a massive youth-led electoral upsurge, named to the TIME 100 list — a radical pushback against traditional South Asian dynastic politics."
+    },
+    {
+      "id": "mohamed-muizzu",
+      "name": "Dr. Mohamed Muizzu",
+      "title": "President of the Maldives",
+      "party": "People's National Congress (PNC)",
+      "country": "Maldives",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Holds consolidated executive control over the Indian Ocean archipelago, pivoting its strategic infrastructure alignment and defense policies."
+    },
+    {
+      "id": "min-aung-hlaing",
+      "name": "Min Aung Hlaing",
+      "title": "President & Junta Leader of Myanmar",
+      "party": null,
+      "country": "Myanmar",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Formalized absolute civilian and military authority over Myanmar through a military junta structure, challenged by a shadow civil government and ethnic coalitions."
+    },
+    {
+      "id": "aung-san-suu-kyi",
+      "name": "Aung San Suu Kyi",
+      "title": "Detained Democracy Icon (National League for Democracy)",
+      "party": "National League for Democracy (NLD)",
+      "country": "Myanmar",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Under arrest by the military junta, she retains massive public legitimacy and symbolic power over Myanmar's pro-democracy movement."
+    },
+    {
+      "id": "zainul-abedin-farroque",
+      "name": "Zainul Abedin Farroque",
+      "title": "Senior Adviser to the BNP; former Opposition Chief Whip",
+      "party": "Bangladesh Nationalist Party (BNP)",
+      "country": "Bangladesh",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Veteran six-term MP from Noakhali and former Opposition Chief Whip, famous for his vocal street-level opposition role after being brutally assaulted by police during the 2011 hartal — an event that became a symbolic flashpoint of state-led crackdowns on opposition politicians."
+    },
+    {
+      "id": "zillur-rahman",
+      "name": "Zillur Rahman",
+      "title": "19th President of Bangladesh",
+      "party": "Bangladesh Awami League",
+      "country": "Bangladesh",
+      "region": "Asia",
+      "status": "historical",
+      "era": "1939–2013 (presidency 2009–2013)",
+      "summary": "Highly revered institutional statesman and senior Awami League Presidium member and General Secretary, remembered as a unifying consensus-builder who kept his party unified through the high-stakes 2007–2008 political transitions."
+    },
+    {
+      "id": "shamim-osman",
+      "name": "Shamim Osman",
+      "title": "Former Member of Parliament (Narayanganj-4)",
+      "party": "Bangladesh Awami League (former)",
+      "country": "Bangladesh",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Controversial regional strongman credited with coining the famous slogan \"Khela Hobe\" (\"The game is on\"). Following the August 5, 2024 political transition, he fled into hiding and faces charges including a trial at International Crimes Tribunal-1 for allegedly leading armed crackdowns during the mass uprisings."
+    },
+    {
+      "id": "fazlur-rahman",
+      "name": "Fazlur Rahman",
+      "title": "Politician",
+      "party": null,
+      "country": "Bangladesh",
+      "region": "Asia",
+      "status": "active",
+      "summary": "Professionally nicknamed \"Fozu Pagla\" for his explosive speaking style, he sparked massive political turmoil after claiming the right-wing Jamaat-e-Islami single-handedly orchestrated the July Revolution, triggering temporary suspension directives within his own party and pushback from student coalitions."
+    },
+    {
+      "id": "sophie-scholl",
+      "name": "Sophie Scholl",
+      "title": "Co-founder of The White Rose Society",
+      "party": "The White Rose (anti-Nazi resistance)",
+      "country": "Germany",
+      "region": "Europe",
+      "status": "historical",
+      "era": "1942–1943",
+      "summary": "Icon of anti-Nazi resistance. As a University of Munich student she co-founded a non-violent student resistance group and distributed underground leaflets exposing Nazi atrocities, becoming a global symbol of moral courage after being executed by the regime."
+    },
+    {
+      "id": "wang-dan",
+      "name": "Wang Dan",
+      "title": "Student Leader, Tiananmen Square Protests",
+      "party": null,
+      "country": "China",
+      "region": "Asia",
+      "status": "historical",
+      "era": "1989",
+      "summary": "Face of the global pro-democracy movement. As a Peking University history student he organized independent student unions and coordinated the Tiananmen Square protests, topping the government's most-wanted list while leading millions in demands for free speech and political reform."
+    },
+    {
+      "id": "john-lewis",
+      "name": "John Lewis",
+      "title": "Co-founder of SNCC; Civil Rights Congressman",
+      "party": "SNCC & Civil Rights Movement",
+      "country": "United States",
+      "region": "Americas",
+      "status": "historical",
+      "era": "1960–1965",
+      "summary": "Architect of desegregation. He co-founded the Student Nonviolent Coordinating Committee, organized the Greensboro sit-ins and Freedom Rides, and endured brutal beatings to force the landmark Voting Rights Act."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>100 Politician Profiles — 100-Don</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3;
+    --muted: #8b949e; --accent: #d4a017; --accent2: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 40px 20px 10px; text-align: center; }
+  h1 { margin: 0 0 6px; font-size: 2rem; letter-spacing: 2px; color: var(--accent); }
+  header p { color: var(--muted); margin: 0; }
+  .bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 16px 20px; position: sticky; top: 0; background: var(--bg); z-index: 10; border-bottom: 1px solid var(--border); }
+  input[type="search"], select {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 1rem; outline: none;
+  }
+  input[type="search"] { width: min(420px, 80vw); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color .15s; }
+  .card:hover { border-color: var(--accent); }
+  .card h2 { margin: 0 0 2px; font-size: 1.15rem; }
+  .title { color: var(--accent2); font-size: .88rem; margin: 0 0 10px; }
+  .summary { color: var(--muted); font-size: .92rem; line-height: 1.5; margin: 10px 0 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: .72rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+  .tag.era { background: #2b2410; border-color: #5a4a10; color: #f0c94a; }
+  .tag.status-historical { background: #202a36; color: #8ab8f2; }
+  .tag.status-active { background: #14301f; color: #7ee2a8; }
+  .tag.status-opposition { background: #3a1618; color: #f29a9e; }
+  .tag.party { font-style: italic; color: var(--muted); }
+  .count { text-align: center; color: var(--muted); padding: 8px; }
+  .num { font-size: 3.4rem; color: var(--accent); font-weight: 800; line-height: 1; }
+  .muted-tag { color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<header>
+  <div class="num">100</div>
+  <h1>POLITICIAN PROFILES</h1>
+  <p>Empire builders, presidents, junta leaders, opposition chiefs &amp; student icons — searchable.</p>
+</header>
+
+<div class="bar">
+  <input id="q" type="search" placeholder="Search name, title, country, summary…" />
+  <select id="region"><option value="">All regions</option></select>
+  <select id="status">
+    <option value="">All statuses</option>
+    <option value="active">Active</option>
+    <option value="opposition">Opposition</option>
+    <option value="historical">Historical</option>
+  </select>
+</div>
+<div class="count" id="count"></div>
+<div class="grid" id="grid"></div>
+
+<script>
+const grid = document.getElementById('grid');
+const q = document.getElementById('q');
+const regionSel = document.getElementById('region');
+const statusSel = document.getElementById('status');
+const countEl = document.getElementById('count');
+let all = [];
+
+fetch('politician_profiles.json')
+  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(data => {
+    all = data.profiles;
+    [...new Set(all.map(p => p.region).filter(Boolean))].sort().forEach(rg => {
+      const o = document.createElement('option'); o.value = rg; o.textContent = rg; regionSel.append(o);
+    });
+    render();
+  })
+  .catch(e => {
+    countEl.textContent = 'Failed to load politician_profiles.json — ' + e.message;
+  });
+
+function esc(s) { return (s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
+function render() {
+  const term = q.value.trim().toLowerCase();
+  const reg = regionSel.value, sta = statusSel.value;
+  const filtered = all.filter(p =>
+    (!reg || p.region === reg) &&
+    (!sta || p.status === sta) &&
+    (!term || [p.name, p.title, p.country, p.region, p.party, p.summary].filter(Boolean).some(v => String(v).toLowerCase().includes(term)))
+  );
+  countEl.textContent = filtered.length + ' of ' + all.length + ' profiles';
+  grid.innerHTML = filtered.map(p => `
+    <article class="card">
+      <h2>${esc(p.name)}</h2>
+      <p class="title">${esc(p.title)}</p>
+      ${p.era ? `<span class="tag era">${esc(p.era)}</span>` : ''}
+      <p class="summary">${esc(p.summary)}</p>
+      <div class="tags">
+        <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
+        <span class="tag">${esc(p.country)}</span>
+        <span class="tag">${esc(p.region)}</span>
+        ${p.party ? `<span class="tag party">${esc(p.party)}</span>` : ''}
+      </div>
+    </article>`).join('');
+}
+
+[q, regionSel, statusSel].forEach(el => el.addEventListener('input', render));
+</script>
+</body>
+</html>

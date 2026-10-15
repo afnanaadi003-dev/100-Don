@@ -50,7 +50,9 @@
   .ranks { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
   .rank { position: relative; background: linear-gradient(150deg, rgba(240,201,74,.14), rgba(22,28,46,.6));
     border: 1px solid var(--border); border-radius: 16px; padding: 16px 22px 14px; min-width: 200px;
-    text-align: center; backdrop-filter: blur(8px); box-shadow: 0 8px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset; }
+    text-align: center; backdrop-filter: blur(8px); box-shadow: 0 8px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset;
+    cursor: pointer; transition: transform .2s, border-color .2s; }
+  .rank:hover { transform: translateY(-3px); border-color: rgba(240,201,74,.6); }
   .rank .ico { font-size: 1.6rem; display: block; margin-bottom: 2px; filter: drop-shadow(0 0 10px rgba(240,201,74,.4)); }
   .rank .r { font-size: 1.7rem; font-weight: 800; color: var(--gold); line-height: 1.1; }
   .rank .n { font-size: .98rem; font-weight: 650; font-family: "Playfair Display", serif; }
@@ -70,32 +72,66 @@
   /* ── premium dreamy cards ── */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 22px; padding: 26px 22px 60px; max-width: 1400px; margin: 0 auto; }
-  .card { position: relative; overflow: visible; border-radius: 18px; padding: 20px 20px 18px;
+  .card { position: relative; overflow: hidden; border-radius: 18px; padding: 0;
     background: linear-gradient(160deg, rgba(255,255,255,.07) 0%, rgba(22,28,46,.55) 45%, rgba(22,28,46,.4) 100%);
     border: 1px solid var(--border); backdrop-filter: blur(10px);
     box-shadow: 0 14px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.04) inset;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-  .card::before { content: ""; position: absolute; inset: 0; border-radius: 18px; pointer-events: none;
-    background: radial-gradient(220px 120px at 18% 0%, rgba(240,201,74,.16), transparent 70%);
-    opacity: .9; }
-  .card:hover { transform: translateY(-5px); border-color: rgba(240,201,74,.6);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    cursor: pointer; outline: none; }
+  .card:hover, .card:focus-visible { transform: translateY(-5px); border-color: rgba(240,201,74,.6);
     box-shadow: 0 22px 55px rgba(0,0,0,.55), 0 0 30px rgba(240,201,74,.18); }
   /* rank badge — upper right corner */
-  .rank-corner { position: absolute; top: -12px; right: -8px; width: 46px; height: 46px;
+  .rank-corner { position: absolute; top: 10px; right: 10px; width: 46px; height: 46px; z-index: 3;
     display: flex; align-items: center; justify-content: center; border-radius: 50%;
     font-weight: 800; font-size: .95rem; color: #241a04;
     background: linear-gradient(135deg, #ffe9a8 0%, var(--gold) 45%, var(--gold2) 100%);
     border: 1px solid rgba(255,255,255,.45);
     box-shadow: 0 0 22px rgba(240,201,74,.55), 0 4px 12px rgba(0,0,0,.45); }
-  .head { display: flex; align-items: center; gap: 14px; }
-  .avatar { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 50%;
+
+  /* cover strip + photo on card */
+  .card-cover { position: relative; height: 104px;
+    background:
+      radial-gradient(120% 90% at 15% 0%, rgba(240,201,74,.35), transparent 60%),
+      linear-gradient(140deg, #3b2f7a 0%, #17203a 55%, #0d1226 100%); }
+  .card-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card-cover::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,11,24,0) 30%, rgba(7,11,24,.82) 100%); }
+  .head { position: relative; z-index: 2; display: flex; align-items: flex-end; gap: 13px;
+    margin-top: -32px; padding: 0 18px; }
+  .avatar { position: relative; flex: 0 0 auto; width: 62px; height: 62px; border-radius: 50%; overflow: hidden;
     display: flex; align-items: center; justify-content: center; font-size: 1.9rem;
     background: conic-gradient(from 210deg, rgba(240,201,74,.55), rgba(124,231,210,.45), rgba(59,47,122,.6), rgba(240,201,74,.55));
-    border: 1px solid rgba(255,255,255,.25); box-shadow: 0 0 20px rgba(240,201,74,.22); }
+    border: 2px solid rgba(255,255,255,.65); box-shadow: 0 6px 22px rgba(0,0,0,.6); }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
   .avatar span { filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
-  .card h2 { font-family: "Playfair Display", serif; margin: 0; font-size: 1.18rem; }
-  .title { color: var(--accent); font-size: .84rem; margin: 2px 0 0; line-height: 1.35; }
-  .summary { color: var(--muted); font-size: .92rem; line-height: 1.55; margin: 14px 0 12px; }
+  .card .head-txt { padding-bottom: 4px; min-width: 0; }
+  .card h2 { font-family: "Playfair Display", serif; margin: 0; font-size: 1.18rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,.85); }
+  .title { color: var(--accent); font-size: .84rem; margin: 2px 0 0; line-height: 1.35;
+    text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+  .card-body { padding: 14px 18px 0; }
+  .summary { color: var(--muted); font-size: .92rem; line-height: 1.55; margin: 12px 0; }
+
+  /* ── the leader's famous big thought on every card ── */
+  .big-thought { position: relative; margin: 14px 0 4px; padding: 14px 16px 13px 34px;
+    border-radius: 14px; border: 1px solid rgba(240,201,74,.3);
+    background: linear-gradient(150deg, rgba(240,201,74,.12), rgba(59,47,122,.16) 60%, rgba(255,255,255,.03));
+    box-shadow: 0 0 22px rgba(240,201,74,.08) inset; }
+  .big-thought::before { content: "\201C"; position: absolute; left: 8px; top: 0;
+    font-family: "Playfair Display", serif; font-size: 2.7rem; line-height: 1; color: var(--gold);
+    opacity: .85; text-shadow: 0 0 16px rgba(240,201,74,.55); }
+  .big-thought .thought-txt { font-family: "Playfair Display", serif; font-style: italic;
+    font-size: 1.02rem; line-height: 1.5; color: #fdf4dd;
+    text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+  .big-thought cite { display: block; margin-top: 8px; font-family: "Inter", sans-serif; font-style: normal;
+    font-size: .68rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); opacity: .85; }
+  .open-hint { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: 14px; padding: 10px 18px; font-size: .74rem; font-weight: 700; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--gold);
+    background: linear-gradient(90deg, rgba(240,201,74,.13), transparent);
+    border-top: 1px solid rgba(255,255,255,.08); }
+  .open-hint span:last-child { transition: transform .2s; }
+  .card:hover .open-hint span:last-child { transform: translateX(5px); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: .72rem; padding: 3px 10px; border-radius: 999px;
     border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05); color: var(--text); }
@@ -104,31 +140,142 @@
   .tag.status-active { background: rgba(126,226,168,.1); color: #7ee2a8; border-color: rgba(126,226,168,.35); }
   .tag.status-opposition { background: rgba(242,154,158,.1); color: #f29a9e; border-color: rgba(242,154,158,.35); }
   .tag.party { font-style: italic; color: var(--muted); }
-  /* ── profile drawer (slides in from upper right) ── */
-  .overlay { position: fixed; inset: 0; background: rgba(4,7,15,.55); backdrop-filter: blur(3px);
+
+  /* notable-work thumbnails on the card */
+  .works-strip { padding: 14px 18px 16px; margin-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+  .works-strip h4 { margin: 0 0 9px; font-size: .68rem; letter-spacing: 2px; font-weight: 700;
+    color: var(--gold); text-transform: uppercase; }
+  .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .thumb { position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.12);
+    background:
+      radial-gradient(100% 100% at 20% 0%, rgba(240,201,74,.32), transparent 65%),
+      linear-gradient(150deg, rgba(59,47,122,.85), rgba(13,18,38,.95)); }
+  .thumb .ph-num { font-family: "Playfair Display", serif; font-size: 1.15rem; color: rgba(255,255,255,.5); }
+  .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform .35s ease; }
+  .card:hover .thumb img { transform: scale(1.07); }
+  .thumb em { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; font-style: normal;
+    font-size: .58rem; line-height: 1.25; padding: 12px 6px 5px; color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.9));
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── centered profile drawer ── */
+  .overlay { position: fixed; inset: 0; background: rgba(4,7,15,.74); backdrop-filter: blur(7px);
     opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 90; }
   .overlay.show { opacity: 1; pointer-events: auto; }
-  .drawer { position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 94vw); z-index: 100;
-    background: linear-gradient(200deg, rgba(26,32,54,.94), rgba(7,11,24,.97));
-    border-left: 1px solid var(--border); box-shadow: -30px 0 70px rgba(0,0,0,.55);
-    transform: translateX(105%); transition: transform .38s cubic-bezier(.22,.9,.32,1); overflow-y: auto; }
-  .drawer.open { transform: translateX(0); }
-  .drawer-close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%;
-    border: 1px solid var(--border); background: rgba(255,255,255,.06); color: var(--text);
-    font-size: 1.1rem; cursor: pointer; z-index: 2; }
+  .drawer { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center;
+    padding: 24px; pointer-events: none; }
+  .drawer.open { pointer-events: auto; }
+  .modal { position: relative; width: min(880px, 100%); max-height: 92vh; overflow-y: auto;
+    border-radius: 22px; background: linear-gradient(200deg, rgba(26,32,54,.97), rgba(7,11,24,.99));
+    border: 1px solid var(--border); box-shadow: 0 45px 90px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05) inset;
+    transform: translateY(26px) scale(.96); opacity: 0;
+    transition: transform .38s cubic-bezier(.22,.9,.32,1), opacity .3s; }
+  .drawer.open .modal { transform: none; opacity: 1; }
+  .drawer-close { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 50%; z-index: 5;
+    border: 1px solid rgba(255,255,255,.3); background: rgba(7,11,24,.65); color: var(--text);
+    font-size: 1.1rem; cursor: pointer; backdrop-filter: blur(6px); }
   .drawer-close:hover { border-color: var(--gold); box-shadow: 0 0 14px rgba(240,201,74,.35); }
-  .drawer-inner { padding: 96px 26px 30px; }
-  .drawer .avatar.big { display: flex; margin: 0 auto; position: relative; width: 92px; height: 92px; font-size: 3rem; }
-  .drawer .avatar.big .rank-corner { top: -8px; right: -14px; width: 42px; height: 42px; font-size: .85rem; }
-  .drawer h2 { font-family: "Playfair Display", serif; text-align: center; margin: 14px 0 4px; font-size: 1.5rem; }
-  .dtitle { text-align: center; color: var(--accent); font-size: .9rem; margin: 0 0 18px; line-height: 1.4; }
-  .drawer dl { display: grid; grid-template-columns: auto 1fr; gap: 9px 16px; margin: 0 0 18px; font-size: .9rem; }
+
+  .d-cover { position: relative; height: 230px;
+    background:
+      radial-gradient(90% 120% at 12% 0%, rgba(240,201,74,.4), transparent 62%),
+      linear-gradient(140deg, #3b2f7a 0%, #17203a 55%, #0d1226 100%); }
+  .d-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .d-cover::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,11,24,.15) 35%, rgba(7,11,24,.92) 100%); }
+  .d-head { position: relative; z-index: 2; display: flex; align-items: flex-end; gap: 18px;
+    margin-top: -54px; padding: 0 30px; }
+  .avatar.big { width: 108px; height: 108px; font-size: 3.2rem; border-width: 3px; overflow: visible; }
+  .avatar.big .rank-corner { top: -8px; right: -8px; width: 42px; height: 42px; font-size: .85rem; }
+  .d-id { padding-bottom: 8px; min-width: 0; }
+  .d-id h2 { font-family: "Playfair Display", serif; margin: 0 0 3px; font-size: clamp(1.4rem, 3vw, 1.9rem);
+    text-shadow: 0 2px 14px rgba(0,0,0,.9); }
+  .dtitle { color: var(--accent); font-size: .92rem; margin: 0 0 9px; line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0,0,0,.85); }
+
+  .d-body { padding: 20px 30px 34px; }
+  .d-body section { margin-top: 22px; }
+  .d-body h3 { margin: 0 0 12px; font-family: "Playfair Display", serif; color: var(--gold);
+    font-size: .86rem; letter-spacing: 3px; text-transform: uppercase;
+    text-shadow: 0 0 16px rgba(240,201,74,.35); }
+  .dsummary { margin: 0; color: var(--text); font-size: 1rem; line-height: 1.75; }
+
+  /* ── famous big thought on the profile page ── */
+  .d-thought { position: relative; margin: 0; padding: 24px 28px 22px 54px; border-radius: 18px;
+    border: 1px solid rgba(240,201,74,.4);
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(240,201,74,.18), transparent 55%),
+      linear-gradient(150deg, rgba(59,47,122,.35), rgba(22,28,46,.5));
+    box-shadow: 0 14px 40px rgba(0,0,0,.35), 0 0 34px rgba(240,201,74,.1) inset; }
+  .d-thought::before { content: "\201C"; position: absolute; left: 18px; top: 4px;
+    font-family: "Playfair Display", serif; font-size: 4.4rem; line-height: 1; color: var(--gold);
+    text-shadow: 0 0 26px rgba(240,201,74,.6); }
+  .d-thought blockquote { margin: 0; font-family: "Playfair Display", serif; font-style: italic;
+    font-size: clamp(1.15rem, 2.4vw, 1.55rem); line-height: 1.55; color: #fff6dd;
+    text-shadow: 0 2px 14px rgba(0,0,0,.7); }
+  .d-thought cite { display: block; margin-top: 14px; font-family: "Inter", sans-serif; font-style: normal;
+    font-size: .72rem; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); }
+  .d-thought cite::before { content: "— "; }
+
+  /* cover / photo generated art fallback */
+  .card-cover img, .d-cover img, .avatar img { image-rendering: auto; }
+
+  .feat { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .feat-item { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden;
+    grid-column: span 2; cursor: zoom-in; border: 1px solid rgba(255,255,255,.12);
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(100% 100% at 20% 0%, rgba(124,231,210,.25), transparent 65%),
+      linear-gradient(150deg, rgba(59,47,122,.9), rgba(13,18,38,.98)); }
+  .feat-item:nth-child(n+4) { grid-column: span 3; aspect-ratio: 16 / 9; }
+  .feat-item .ph { font-size: 1.5rem; opacity: .55; }
+  .feat-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform .35s ease; }
+  .feat-item:hover img { transform: scale(1.06); }
+  .feat-item figcaption { position: absolute; left: 8px; bottom: 6px; z-index: 2; font-size: .62rem;
+    letter-spacing: 1px; color: #fff; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px; padding: 2px 8px; backdrop-filter: blur(4px); }
+
+  .works { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+  .work-item { margin: 0; border-radius: 14px; overflow: hidden; cursor: zoom-in;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    transition: transform .2s, border-color .2s; }
+  .work-item:hover { transform: translateY(-4px); border-color: rgba(240,201,74,.55); }
+  .work-media { position: relative; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(100% 100% at 15% 0%, rgba(240,201,74,.35), transparent 65%),
+      linear-gradient(150deg, #3b2f7a, #0d1226); }
+  .work-media .ph { font-size: 1.7rem; opacity: .6; }
+  .work-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .work-item figcaption { padding: 10px 12px 12px; }
+  .work-item .wt { font-size: .86rem; font-weight: 650; line-height: 1.35; }
+  .work-item .wy { display: inline-block; margin-top: 6px; font-size: .68rem; color: var(--gold);
+    border: 1px solid rgba(240,201,74,.4); background: rgba(240,201,74,.1); border-radius: 999px; padding: 2px 8px; }
+
+  .drawer dl { display: grid; grid-template-columns: auto 1fr; gap: 9px 16px; margin: 0; font-size: .9rem;
+    border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 16px 18px;
+    background: rgba(255,255,255,.035); }
   .drawer dt { color: var(--muted); font-weight: 600; }
   .drawer dd { margin: 0; text-align: right; }
-  .dsummary { color: var(--muted); font-size: .93rem; line-height: 1.65; border-top: 1px solid rgba(240,201,74,.25); padding-top: 16px; }
-  .name-btn { cursor: pointer; transition: color .2s; }
-  .name-btn:hover { color: var(--gold); text-shadow: 0 0 14px rgba(240,201,74,.45); }
+
+  .lightbox { position: fixed; inset: 0; z-index: 130; display: none; align-items: center; justify-content: center;
+    padding: 30px; background: rgba(3,5,12,.93); backdrop-filter: blur(6px); cursor: zoom-out; }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; border-radius: 16px;
+    box-shadow: 0 0 80px rgba(0,0,0,.85); border: 1px solid var(--border); }
+
   .count { text-align: center; color: var(--muted); padding: 8px; }
+
+  @media (max-width: 640px) {
+    .d-cover { height: 170px; }
+    .d-head { padding: 0 18px; margin-top: -44px; gap: 12px; }
+    .avatar.big { width: 84px; height: 84px; font-size: 2.5rem; }
+    .d-body { padding: 16px 18px 28px; }
+    .drawer { padding: 10px; }
+    .feat-item, .feat-item:nth-child(n+4) { grid-column: span 3; aspect-ratio: 4 / 3; }
+  }
 </style>
 </head>
 <body>
@@ -137,7 +284,7 @@
 <header>
   <div class="num">100</div>
   <h1>POLITICIAN PROFILES</h1>
-  <p>Empire builders, presidents, junta leaders, opposition chiefs &amp; student icons — searchable.</p>
+  <p>Empire builders, presidents, junta leaders, opposition chiefs &amp; student icons — searchable. Click any card to open the full profile.</p>
 </header>
 
 <section class="leader">
@@ -163,10 +310,13 @@
 <div class="grid" id="grid"></div>
 
 <div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true">
-  <button class="drawer-close" id="drawerClose" aria-label="Close profile">✕</button>
-  <div class="drawer-inner" id="drawerInner"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Profile">
+  <div class="modal">
+    <button class="drawer-close" id="drawerClose" aria-label="Close profile">✕</button>
+    <div id="drawerInner"></div>
+  </div>
 </aside>
+<div class="lightbox" id="lightbox"><img id="lightboxImg" alt="" /></div>
 
 <script>
 const grid = document.getElementById('grid');
@@ -177,9 +327,13 @@ const statusSel = document.getElementById('status');
 const countEl = document.getElementById('count');
 const drawer = document.getElementById('drawer');
 const overlay = document.getElementById('overlay');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
 let all = [];
+let WORKS = {};
+let THOUGHTS = {};
 
-/* unique war crest / icon per politician */
+/* unique war crest / icon per politician (fallback when photo missing) */
 const ICONS = {
   "genghis-khan": "🐎", "alexander-the-great": "⚔️", "julius-caesar": "🦅", "napoleon-bonaparte": "🎖️", "abraham-lincoln": "🎩",
   "vladimir-putin": "🐻", "mikhail-mishustin": "💼", "sergey-lavrov": "🤝", "andrey-belousov": "⚙️", "sergey-sobyanin": "🏙️",
@@ -211,24 +365,82 @@ const ICONS = {
   "sophie-scholl": "🤍", "wang-dan": "🐋", "john-lewis": "🔗", "abid-al-hasan": "🎓"
 };
 
-fetch('politician_profiles.json')
-  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(data => {
+const loadJSON = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' → HTTP ' + r.status); return r.json(); });
+
+Promise.all([
+  loadJSON('politician_profiles.json'),
+  loadJSON('notable_works.json'),
+  loadJSON('famous_thoughts.json').catch(() => ({}))
+])
+  .then(([data, works, thoughts]) => {
     all = data.profiles;
+    WORKS = works || {};
+    THOUGHTS = thoughts || {};
     [...new Set(all.map(p => p.region).filter(Boolean))].sort().forEach(rg => {
       const o = document.createElement('option'); o.value = rg; o.textContent = rg; regionSel.append(o);
     });
     const top = all.filter(p => p.global_power_rank).sort((a, b) => a.global_power_rank - b.global_power_rank);
     document.getElementById('ranks').innerHTML = top.map(p =>
-      `<div class="rank"><span class="ico">${icon(p)}</span><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('');
+      `<div class="rank" data-id="${esc(p.id)}" role="button" tabindex="0"><span class="ico">${icon(p)}</span><div class="r">#${p.global_power_rank}</div><div class="n">${esc(p.name)}</div><div class="t">${esc(p.country)}</div></div>`).join('');
     render();
     const wantedId = new URLSearchParams(location.search).get('id');
     if (wantedId) openProfile(wantedId);
   })
-  .catch(e => { countEl.textContent = 'Failed to load politician_profiles.json — ' + e.message; });
+  .catch(e => { countEl.textContent = 'Failed to load profile data — ' + e.message; });
 
 function esc(s) { return (s ?? '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 function icon(p) { return ICONS[p.id] || '🏛️'; }
+function img(path, alt, cls) {
+  return `<img class="${cls || ''}" src="${path}" alt="${esc(alt)}" loading="lazy" onerror="this.remove()" />`;
+}
+function worksOf(p) { return WORKS[p.id] || []; }
+function thoughtOf(p) { const t = THOUGHTS[p.id]; return t ? (t.quote || t) : (p.thought || p.summary); }
+function thoughtSrc(p) { const t = THOUGHTS[p.id]; return t && t.source ? t.source : ''; }
+
+/* ── generated cover / profile-photo art (used until a real jpg exists in images/{id}/) ── */
+function hueOf(id) { let h = 0; for (const c of id) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
+function initialsOf(name) {
+  return name.replace(/^Dr\.\s+/i, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+}
+function svgURI(svg) {
+  return 'data:image/svg+xml,' + encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
+}
+function coverArt(p) {
+  const h = hueOf(p.id), ini = initialsOf(p.name), em = icon(p);
+  return svgURI(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 240'>
+    <defs>
+      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+        <stop offset='0' stop-color='hsl(${h},62%,30%)'/><stop offset='.55' stop-color='hsl(${(h + 40) % 360},55%,17%)'/><stop offset='1' stop-color='hsl(${(h + 300) % 360},60%,12%)'/>
+      </linearGradient>
+      <radialGradient id='r' cx='.18' cy='0' r='1.1'>
+        <stop offset='0' stop-color='hsla(${(h + 45) % 360},90%,62%,.55)'/><stop offset='.6' stop-color='transparent'/>
+      </radialGradient>
+    </defs>
+    <rect width='800' height='240' fill='url(#g)'/><rect width='800' height='240' fill='url(#r)'/>
+    <text x='760' y='205' font-family='Georgia,serif' font-size='210' font-weight='700' text-anchor='end'
+      fill='hsla(${(h + 20) % 360},90%,75%,.16)'>${ini}</text>
+    <text x='40' y='120' font-size='76'>${em}</text>
+    <text x='40' y='186' font-family='Georgia,serif' font-size='44' font-weight='700' fill='#f6eedb'>${esc(p.name)}</text>
+    <text x='42' y='216' font-family='Arial,sans-serif' font-size='19' letter-spacing='4' fill='hsl(${(h + 45) % 360},85%,72%)'>${esc((p.country || '').toUpperCase())}</text>
+  </svg>`);
+}
+function photoArt(p) {
+  const h = hueOf(p.id), ini = initialsOf(p.name);
+  return svgURI(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'>
+    <defs>
+      <linearGradient id='p' x1='0' y1='0' x2='1' y2='1'>
+        <stop offset='0' stop-color='hsl(${(h + 45) % 360},70%,38%)'/><stop offset='1' stop-color='hsl(${(h + 310) % 360},60%,16%)'/>
+      </linearGradient>
+    </defs>
+    <rect width='220' height='220' fill='url(#p)'/>
+    <circle cx='110' cy='84' r='44' fill='hsla(${(h + 20) % 360},90%,80%,.3)'/>
+    <text x='110' y='168' text-anchor='middle' font-family='Georgia,serif' font-size='74' font-weight='700' fill='#fff8e8'>${ini}</text>
+  </svg>`);
+}
+/* real photo/cover if present in images/{id}/, otherwise the generated art */
+function pic(path, alt, fallback) {
+  return `<img src="${path}" alt="${esc(alt)}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'" />`;
+}
 
 function render() {
   const term = q.value.trim().toLowerCase();
@@ -237,28 +449,53 @@ function render() {
     (!cat || (cat === 'top5' && p.global_power_rank)) &&
     (!reg || p.region === reg) &&
     (!sta || p.status === sta) &&
-    (!term || [p.name, p.title, p.country, p.region, p.party, p.summary].filter(Boolean).some(v => String(v).toLowerCase().includes(term)))
+    (!term || [p.name, p.title, p.country, p.region, p.party, p.summary, thoughtOf(p)].filter(Boolean).some(v => String(v).toLowerCase().includes(term)))
   );
   countEl.textContent = filtered.length + ' of ' + all.length + ' profiles';
-  grid.innerHTML = filtered.map(p => `
-    <article class="card">
+  grid.innerHTML = filtered.map(p => {
+    const works = worksOf(p).slice(0, 3);
+    const thought = thoughtOf(p);
+    const src = thoughtSrc(p);
+    return `
+    <article class="card" data-id="${esc(p.id)}" tabindex="0" role="button" aria-label="Open profile of ${esc(p.name)}">
       ${p.global_power_rank ? `<span class="rank-corner">#${p.global_power_rank}</span>` : ''}
+      <div class="card-cover">${pic('images/' + p.id + '/cover.jpg', p.name + ' cover', coverArt(p))}</div>
       <div class="head">
-        <div class="avatar"><span>${icon(p)}</span></div>
-        <div>
-          <h2 class="name-btn" data-id="${esc(p.id)}" title="Open full profile">${esc(p.name)}</h2>
+        <div class="avatar"><span>${icon(p)}</span>${pic('images/' + p.id + '/photo.jpg', p.name, photoArt(p))}</div>
+        <div class="head-txt">
+          <h2>${esc(p.name)}</h2>
           <p class="title">${esc(p.title)}</p>
         </div>
       </div>
-      ${p.era ? `<span class="tag era" style="margin-top:12px">${esc(p.era)}</span>` : ''}
-      <p class="summary">${esc(p.summary)}</p>
-      <div class="tags">
-        <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
-        <span class="tag">${esc(p.country)}</span>
-        <span class="tag">${esc(p.region)}</span>
-        ${p.party ? `<span class="tag party">${esc(p.party)}</span>` : ''}
+      <div class="card-body">
+        ${p.era ? `<span class="tag era" style="margin-top:12px;display:inline-block">${esc(p.era)}</span>` : ''}
+        ${thought ? `<blockquote class="big-thought">
+          <div class="thought-txt">${esc(thought)}</div>
+          ${src || p.name ? `<cite>${esc(src || p.name)}</cite>` : ''}
+        </blockquote>` : ''}
+        <p class="summary">${esc(p.summary)}</p>
+        <div class="tags">
+          <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
+          <span class="tag">${esc(p.country)}</span>
+          <span class="tag">${esc(p.region)}</span>
+          ${p.party ? `<span class="tag party">${esc(p.party)}</span>` : ''}
+        </div>
       </div>
-    </article>`).join('');
+      ${works.length ? `
+      <div class="works-strip">
+        <h4>Notable Works</h4>
+        <div class="strip">
+          ${works.map((w, i) => `
+            <div class="thumb" title="${esc(w[0])}">
+              <span class="ph-num">${i + 1}</span>
+              ${img('images/' + p.id + '/work-' + (i + 1) + '.jpg', w[0])}
+              <em>${esc(w[0])}</em>
+            </div>`).join('')}
+        </div>
+      </div>` : ''}
+      <div class="open-hint"><span>Full profile — cover, photo &amp; works</span><span>Open →</span></div>
+    </article>`;
+  }).join('');
 }
 
 [q, categorySel, regionSel, statusSel].forEach(el => el.addEventListener('input', render));
@@ -266,6 +503,7 @@ function render() {
 function openProfile(id) {
   const p = all.find(x => x.id === id);
   if (!p) return;
+  const works = worksOf(p);
   const rows = [
     ['Global Power Rank', p.global_power_rank ? '#' + p.global_power_rank : null],
     ['Status', p.status],
@@ -274,14 +512,75 @@ function openProfile(id) {
     ['Party', p.party],
     ['Era', p.era]
   ].filter(r => r[1]);
+
+  const features = [1, 2, 3, 4, 5].map(n => `
+    <figure class="feat-item" data-full="images/${p.id}/feature-${n}.jpg">
+      <span class="ph">${icon(p)}</span>
+      ${img('images/' + p.id + '/feature-' + n + '.jpg', p.name + ' feature ' + n)}
+      <figcaption>FEATURE ${n}</figcaption>
+    </figure>`).join('');
+
   document.getElementById('drawerInner').innerHTML = `
-    <div class="avatar big"><span>${icon(p)}</span>${p.global_power_rank ? `<span class="rank-corner">#${p.global_power_rank}</span>` : ''}</div>
-    <h2>${esc(p.name)}</h2>
-    <p class="dtitle">${esc(p.title)}</p>
-    <dl>${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
-    <p class="dsummary">${esc(p.summary)}</p>`;
+    <div class="d-cover">${pic('images/' + p.id + '/cover.jpg', p.name + ' cover', coverArt(p))}</div>
+    <div class="d-head">
+      <div class="avatar big">
+        <span>${icon(p)}</span>
+        ${pic('images/' + p.id + '/photo.jpg', p.name, photoArt(p))}
+        ${p.global_power_rank ? `<span class="rank-corner">#${p.global_power_rank}</span>` : ''}
+      </div>
+      <div class="d-id">
+        <h2>${esc(p.name)}</h2>
+        <p class="dtitle">${esc(p.title)}</p>
+        <div class="tags">
+          <span class="tag status-${esc(p.status)}">${esc(p.status)}</span>
+          <span class="tag">${esc(p.country)}</span>
+          <span class="tag">${esc(p.region)}</span>
+          ${p.party ? `<span class="tag party">${esc(p.party)}</span>` : ''}
+          ${p.era ? `<span class="tag era">${esc(p.era)}</span>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="d-body">
+      <section>
+        <h3>Famous Big Thought</h3>
+        <figure class="d-thought">
+          <blockquote>${esc(thoughtOf(p))}</blockquote>
+          ${thoughtSrc(p) ? `<cite>${esc(thoughtSrc(p))}</cite>` : `<cite>${esc(p.name)}</cite>`}
+        </figure>
+      </section>
+      <section>
+        <h3>Profile</h3>
+        <p class="dsummary">${esc(p.summary)}</p>
+      </section>
+      <section>
+        <h3>Features</h3>
+        <div class="feat">${features}</div>
+      </section>
+      <section>
+        <h3>Notable Works</h3>
+        <div class="works">
+          ${works.map((w, i) => `
+            <figure class="work-item" data-full="images/${p.id}/work-${i + 1}.jpg">
+              <div class="work-media">
+                <span class="ph">📜</span>
+                ${img('images/' + p.id + '/work-' + (i + 1) + '.jpg', w[0])}
+              </div>
+              <figcaption>
+                <div class="wt">${esc(w[0])}</div>
+                ${w[1] ? `<span class="wy">${esc(w[1])}</span>` : ''}
+              </figcaption>
+            </figure>`).join('') || '<p class="count">No notable works listed.</p>'}
+        </div>
+      </section>
+      <section>
+        <h3>Details</h3>
+        <dl>${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
+      </section>
+    </div>`;
+
   drawer.classList.add('open');
   overlay.classList.add('show');
+  document.querySelector('.modal').scrollTop = 0;
   history.replaceState(null, '', '?id=' + encodeURIComponent(id));
   document.body.style.overflow = 'hidden';
 }
@@ -294,12 +593,30 @@ function closeProfile() {
 }
 
 grid.addEventListener('click', e => {
-  const b = e.target.closest('.name-btn');
-  if (b) openProfile(b.dataset.id);
+  const card = e.target.closest('.card');
+  if (card) openProfile(card.dataset.id);
+});
+grid.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const card = e.target.closest('.card');
+  if (card) { e.preventDefault(); openProfile(card.dataset.id); }
+});
+document.getElementById('ranks').addEventListener('click', e => {
+  const r = e.target.closest('.rank');
+  if (r) openProfile(r.dataset.id);
 });
 document.getElementById('drawerClose').addEventListener('click', closeProfile);
 overlay.addEventListener('click', closeProfile);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
+
+/* click an enlarged feature / work image */
+drawer.addEventListener('click', e => {
+  const fig = e.target.closest('.feat-item, .work-item');
+  if (!fig || !e.target.closest('img')) return;
+  lightboxImg.src = e.target.currentSrc || e.target.src;
+  lightbox.classList.add('show');
+});
+lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
 </script>
 </body>
 </html>
